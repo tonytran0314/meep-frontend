@@ -72,18 +72,18 @@
         <!-- RIGHT COLUMN -->
         <div class="size-20 bg-white dark:bg-gray-800 shadow-lg rounded-2xl h-full flex flex-col flex-1 p-4 gap-4">
             <!-- CHAT HEADER -->
-            <div class="w-full h-12">
+            <div class="w-full h-12 flex justify-between">
                 <!-- CHATTING PERSON OR GROUP INFO -->
                 <div class="flex items-center gap-2">
                     <!-- AVATAR -->
                     <div class="size-12 rounded-full bg-gray-500 shadow-lg"></div>
                     <!-- PERSON OR GROUP NAME -->
-                    <p>Trần Gia Huy</p>
+                    <p class="font-bold">Trần Gia Huy</p>
                 </div>
                 <!-- ACTIONS: VOICE CALL, VIDEO CALL -->
-                <div>
-                    <div></div>
-                    <div></div>
+                <div class="flex items-center gap-2">
+                    <font-awesome-icon :icon="['fas', 'phone']" class="size-5 cursor-pointer hover:bg-gray-200 rounded-full p-2" />
+                    <font-awesome-icon :icon="['fas', 'video']" class="size-5 cursor-pointer hover:bg-gray-200 rounded-full p-2" />
                 </div>
             </div>
             <!-- CHAT BODY -->
