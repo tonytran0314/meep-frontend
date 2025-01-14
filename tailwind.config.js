@@ -3,7 +3,11 @@ export default {
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   darkMode: 'class', // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        default: ['Be Vietnam Pro', 'sans-serif'],
+      },
+    },
   },
   variants: {
     extend: {},
