@@ -1,6 +1,6 @@
 <script setup>
     import { messageStore } from '@/stores/message'
-import { onMounted } from 'vue';
+    import { onMounted } from 'vue';
     
     const message = messageStore()
     
