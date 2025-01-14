@@ -7,18 +7,24 @@ export const messageStore = defineStore('message', () => {
     /* -------------------------------------------------------------------------- */
     /*                                   STATES                                   */
     /* -------------------------------------------------------------------------- */
-    const content = ref(null)
+    const newMessage = ref(null)
+    const messages = ref(null)
 
 
     /* -------------------------------------------------------------------------- */
     /*                                   METHODS                                  */
     /* -------------------------------------------------------------------------- */
-    const send = async () => {
-        try {
-            const res = await api.post('/send-message')
-        } catch (error) {
-            console.log(error)
-        }
+    const send =  () => {
+        console.log(newMessage.value)
+        // try {
+        //     await api.post('/send-message')
+        // } catch (error) {
+        //     console.log(error)
+        // }
+    }
+    
+    const clearNewMessageContent = () => {
+        newMessage.value = null
     }
 
 
@@ -34,7 +40,10 @@ export const messageStore = defineStore('message', () => {
     /*                                   RETURN                                   */
     /* -------------------------------------------------------------------------- */
     return {
-        send
+        newMessage,
+        messages,
+        send,
+        clearNewMessageContent
     }
 
 })
