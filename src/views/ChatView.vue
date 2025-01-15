@@ -3,16 +3,17 @@
     import { storeToRefs } from 'pinia'
     
     const message = messageStore()
-    const { newMessage } = storeToRefs(message)
+    const { newMessage, messages } = storeToRefs(message)
     
     const sendMessage = () => {
         message.send()
+        message.addNewMessageToMessageListTemporary()
         message.clearNewMessageContent()
     }
 
     // listen to the new message
     window.Echo.channel('public-chat').listen('.SendMessage', (event) => {
-        // console.log('Message Received: ' + event.message)
+        console.log('Message Received: ' + event.message)
     })
 </script>
 
@@ -92,8 +93,9 @@
             <div class="flex flex-col-reverse w-full flex-1 overflow-y-auto gap-0.5 px-2">
                 <!-- CHAT LINE -->
                 <!-- for the others text -->
-                <div class="bg-gray-200 px-4 py-2 max-w-[75%] rounded-2xl self-start">this is a chat line 1</div> 
-                <div class="bg-gray-200 px-4 py-2 max-w-[75%] rounded-2xl self-start">this is a chat line 2</div> 
+                <div v-for="message in messages" class="bg-gray-200 px-4 py-2 max-w-[75%] rounded-2xl self-start">
+                    {{ message.content }}
+                </div> 
                 <!-- for my text -->
                 <!-- <div class="bg-teal-600 text-white max-w-[75%] px-4 py-2 rounded-2xl self-end">this is a chat line 3</div>
                 <div class="bg-teal-600 text-white max-w-[75%] px-4 py-2 rounded-2xl self-end">this is a chat line 4</div> -->
