@@ -1,6 +1,6 @@
 <script setup>
-    import Rooms from '@/components/RoomsContainer.vue'
-    import ChatSpace from '@/components/ChatSpaceContainer.vue'
+    import Rooms from '@/components/rooms/Container.vue'
+    import Chat from '@/components/chat/Container.vue'
 </script>
 
 <template>
@@ -9,6 +9,6 @@
         <Rooms />
 
         <!-- RIGHT COLUMN -->
-        <ChatSpace />
+        <Chat />
     </div>
 </template>
