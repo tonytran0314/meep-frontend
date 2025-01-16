@@ -7,14 +7,16 @@
 </script>
 
 <template>
-    <div class="size-20 bg-white dark:bg-gray-800 shadow-lg rounded-2xl h-full w-96 p-4 flex flex-col gap-8">
+    <div class="bg-white dark:bg-gray-800 shadow-lg rounded-2xl h-full w-96 p-4">
         <Suspense>
-            <UserInformation />
+            <div class="flex flex-col gap-8">
+                <UserInformation />
+                <RoomList />
+                <button @click="auth.logout" class="bg-teal-200">Logout</button>
+            </div>
             <template #fallback>
-                Loading user info...
+                Loading...
             </template>
         </Suspense>
-        <button @click="auth.logout" class="bg-teal-200">Logout</button>
-        <RoomList />
     </div>
 </template>

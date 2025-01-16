@@ -35,7 +35,7 @@ const routes = [
   /*                                  CHAT VIEW                                 */
   /* -------------------------------------------------------------------------- */
   {
-    path: '/chat',
+    path: '/chat/:roomId',
     component: () => import('@/views/ChatView.vue'),
     name: 'Chat'
   },

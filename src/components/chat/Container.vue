@@ -1,7 +1,10 @@
 <script setup>
     import { messageStore } from '@/stores/message'
     import { storeToRefs } from 'pinia'
+    import { watch } from 'vue'
+    import { useRoute } from 'vue-router'
     
+    const route = useRoute()
     const message = messageStore()
     const { newMessage, messages } = storeToRefs(message)
     
@@ -14,6 +17,10 @@
     // listen to the new message
     window.Echo.channel('public-chat').listen('.SendMessage', (event) => {
         console.log('Message Received: ' + event.message)
+    })
+
+    watch(() => route.params.roomId, (newRoomId) => {
+        console.log('The room id now is: ' + newRoomId)
     })
 </script>
 
