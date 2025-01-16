@@ -45,42 +45,42 @@ const routes = [
   /* -------------------------------------------------------------------------- */
   /*                             AUTHENTICATION VIEW                            */
   /* -------------------------------------------------------------------------- */
-  // {
-  //   path: '/login',
-  //   component: () => import('@/views/AuthView.vue'),
-  //   // beforeEnter: (to, from, next) => {
-  //   //   authenticationCheck()
-  //   //   .then((isAuthenticated) => {
-  //   //     if(isAuthenticated) { next({ name: 'Dashboard'}) } 
-  //   //     else { next() }
-  //   //   })
-  //   // },
-  //   children: [
-  //     {
-  //       path: '',
-  //       name: 'Login',
-  //       component: () => import('@/components/auth/LoginForm.vue'),
-  //     }
-  //   ],
-  // },
-  // { 
-  //   path: '/signup', 
-  //   component: () => import('@/views/AuthView.vue'),
-  //   // beforeEnter: (to, from, next) => {
-  //   //   authenticationCheck()
-  //   //   .then((isAuthenticated) => {
-  //   //     if(isAuthenticated) { next({ name: 'Dashboard'}) } 
-  //   //     else { next() }
-  //   //   })
-  //   // },
-  //   children: [
-  //     {
-  //       path: '',
-  //       name: 'Signup',
-  //       component: () => import('@/components/auth/SignupForm.vue'),
-  //     }
-  //   ],
-  // },
+  {
+    path: '/login',
+    component: () => import('@/views/AuthView.vue'),
+    // beforeEnter: (to, from, next) => {
+    //   authenticationCheck()
+    //   .then((isAuthenticated) => {
+    //     if(isAuthenticated) { next({ name: 'Dashboard'}) } 
+    //     else { next() }
+    //   })
+    // },
+    children: [
+      {
+        path: '',
+        name: 'Login',
+        component: () => import('@/components/auth/LoginForm.vue'),
+      }
+    ],
+  },
+  { 
+    path: '/signup', 
+    component: () => import('@/views/AuthView.vue'),
+    // beforeEnter: (to, from, next) => {
+    //   authenticationCheck()
+    //   .then((isAuthenticated) => {
+    //     if(isAuthenticated) { next({ name: 'Dashboard'}) } 
+    //     else { next() }
+    //   })
+    // },
+    children: [
+      {
+        path: '',
+        name: 'Signup',
+        component: () => import('@/components/auth/SignupForm.vue'),
+      }
+    ],
+  },
 
 
 
