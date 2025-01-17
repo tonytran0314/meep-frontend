@@ -1,23 +1,28 @@
 <script setup>
     import { modalStore } from '@/stores/modal'
+    import { themeStore } from '@/stores/theme'
+    import { ref } from 'vue'
+
     import MenuModal from '@/components/modals/MenuModal.vue'
 
     const modal = modalStore()
+    const theme = themeStore()
+    const selectedTheme = localStorage.getItem('theme') ? ref(localStorage.getItem('theme')) : ref('dark')
 
     const back = () => {
         modal.open(MenuModal, { title: 'Menu' })
     }
+
+    const updateThemeMode = () => {
+        theme.switchTo(selectedTheme.value)
+    }
 </script>
 
 <template>
-    <div class="bg-red-300">
-        <div class="flex justify-between">
+    <div>
+        <div class="flex justify-between items-center">
             <p>Theme</p>
-            <!-- <select v-model="selectedTheme" @change="updateThemeMode" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-emerald-600 dark:focus:border-emerald-600">
-                <option value="light">Light</option>
-                <option value="dark">Dark</option>
-            </select> -->
-            <select>
+            <select v-model="selectedTheme" @change="updateThemeMode" class="bg-white border dark:bg-gray-700 p-2 rounded-lg">
                 <option value="light">Light</option>
                 <option value="dark">Dark</option>
             </select>
