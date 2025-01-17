@@ -1,11 +1,12 @@
 <script setup>
     import { messageStore } from '@/stores/message'
     import { storeToRefs } from 'pinia'
-    import { watch } from 'vue'
+    import { watch, ref } from 'vue'
     import { useRoute } from 'vue-router'
     
     const route = useRoute()
     const message = messageStore()
+    const currentRoomId = ref(route.params.roomId)
     const { newMessage, messages } = storeToRefs(message)
     
     const sendMessage = () => {
@@ -21,7 +22,11 @@
 
     watch(() => route.params.roomId, (newRoomId) => {
         console.log('The room id now is: ' + newRoomId)
+        currentRoomId.value = newRoomId
+        message.get(newRoomId)
     })
+
+    message.get(currentRoomId.value)
 </script>
 
 <template>
@@ -33,7 +38,7 @@
                 <!-- AVATAR -->
                 <div class="size-12 rounded-full bg-gray-500 shadow-lg"></div>
                 <!-- PERSON OR GROUP NAME -->
-                <p class="font-bold">Trần Gia Huy</p>
+                <p class="font-bold">Trần Gia Huy: {{ currentRoomId }}</p>
             </div>
             <!-- ACTIONS: VOICE CALL, VIDEO CALL -->
             <div class="flex items-center gap-2">
