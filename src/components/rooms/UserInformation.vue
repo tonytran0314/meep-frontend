@@ -1,20 +1,20 @@
 <script setup>
     import { profileStore } from '@/stores/profile'
     import { modalStore } from '@/stores/modal'
-    import LogoutModal from '@/components/modals/LogoutModal.vue'
+    import MenuModal from '@/components/modals/MenuModal.vue'
 
     const profile = profileStore()
     const modal = modalStore()
 
-    const logoutConfirm = () => {
-        modal.open(LogoutModal)
+    const openMenuModal = () => {
+        modal.open(MenuModal)
     }
 
     await profile.get()
 </script>
 
 <template>
-    <div @click="logoutConfirm" class="flex gap-2 p-3 rounded-lg cursor-pointer hover:bg-gray-200">
+    <div @click="openMenuModal" class="flex gap-2 p-3 rounded-lg cursor-pointer hover:bg-gray-200">
         <!-- AVATAR -->
         <div class="size-12 rounded-full bg-teal-600 shadow-lg"></div>
         <!-- FULLNAME -->
