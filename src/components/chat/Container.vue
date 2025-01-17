@@ -42,15 +42,15 @@
             </div>
             <!-- ACTIONS: VOICE CALL, VIDEO CALL -->
             <div class="flex items-center gap-2">
-                <font-awesome-icon :icon="['fas', 'phone']" class="text-gray-600 size-5 cursor-pointer hover:bg-gray-200 rounded-full p-2" />
-                <font-awesome-icon :icon="['fas', 'video']" class="text-gray-600 size-5 cursor-pointer hover:bg-gray-200 rounded-full p-2" />
+                <font-awesome-icon :icon="['fas', 'phone']" class="text-gray-600 dark:text-gray-400 size-5 cursor-pointer hover:bg-gray-200 rounded-full p-2 dark:hover:bg-gray-700" />
+                <font-awesome-icon :icon="['fas', 'video']" class="text-gray-600 dark:text-gray-400 size-5 cursor-pointer hover:bg-gray-200 rounded-full p-2 dark:hover:bg-gray-700" />
             </div>
         </div>
         <!-- CHAT BODY -->
         <div class="flex flex-col-reverse w-full flex-1 overflow-y-auto gap-0.5 px-2">
             <!-- CHAT LINE -->
             <!-- for the others text -->
-            <div v-for="message in messages" class="bg-gray-200 px-4 py-2 max-w-[75%] rounded-2xl self-start">
+            <div v-for="message in messages" class="bg-gray-200 dark:bg-gray-700 px-4 py-2 max-w-[75%] rounded-2xl self-start">
                 {{ message.content }}
             </div> 
             <!-- for my text -->
@@ -61,13 +61,13 @@
         <div class="w-full h-12 flex items-center gap-4">
             <!-- MEDIA -->
             <div class="flex gap-2">
-                <font-awesome-icon :icon="['fas', 'image']" class="text-gray-600 size-5 cursor-pointer hover:bg-gray-200 p-2 rounded-full" />
-                <font-awesome-icon :icon="['fas', 'note-sticky']" class="text-gray-600 size-5 cursor-pointer hover:bg-gray-200 p-2 rounded-full" />
+                <font-awesome-icon :icon="['fas', 'image']" class="text-gray-600 dark:text-gray-400 size-5 cursor-pointer hover:bg-gray-200 p-2 rounded-full dark:hover:bg-gray-700" />
+                <font-awesome-icon :icon="['fas', 'note-sticky']" class="text-gray-600 dark:text-gray-400 size-5 cursor-pointer hover:bg-gray-200 p-2 rounded-full dark:hover:bg-gray-700" />
             </div>
             <!-- MESSAGE INPUT & SEND BUTTON -->
             <form @submit.prevent="sendMessage" class="flex gap-2 flex-1">
                 <div class="flex items-center flex-1">
-                    <input v-model="newMessage" type="text" class="h-full border-2 rounded-full flex-1 px-4" placeholder="Aa...">
+                    <input v-model="newMessage" type="text" class="h-full border-2 rounded-full flex-1 px-4 dark:bg-gray-700 dark:border-gray-700" placeholder="Aa...">
                 </div>
                 <button type="submit" class="flex justify-center items-center">
                     <font-awesome-icon :icon="['fas', 'paper-plane']" class="text-teal-600 size-5 hover:bg-teal-100 p-2 rounded-full" />
