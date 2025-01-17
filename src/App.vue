@@ -1,5 +1,8 @@
 <script setup>
   import BaseModal from '@/components/modals/BaseModal.vue'
+  import { onMounted } from 'vue'
+  import { themeStore } from '@/stores/theme'
+
   import Echo from 'laravel-echo'
   import Pusher from 'pusher-js'
 
@@ -13,6 +16,11 @@
       wssPort: import.meta.env.VITE_REVERB_PORT ?? 443,
       forceTLS: (import.meta.env.VITE_REVERB_SCHEME ?? 'https') === 'https',
       enabledTransports: ['ws', 'wss'],
+  })
+
+  onMounted(() => {
+    const theme = themeStore()
+    theme.initialize()
   })
 </script>
 
