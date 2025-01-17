@@ -2,9 +2,7 @@
     import UserInformation from '@/components/rooms/UserInformation.vue'
     import SearchBar from '@/components/rooms/SearchBar.vue'
     import RoomList from '@/components/rooms/List.vue'
-    import { authStore } from '@/stores/authentication'
-
-    const auth = authStore()
+    import Loading from '@/components/rooms/Loading.vue'
 </script>
 
 <template>
@@ -19,7 +17,7 @@
                 <RoomList />
             </div>
             <template #fallback>
-                Loading...
+                <Loading />
             </template>
         </Suspense>
     </div>
