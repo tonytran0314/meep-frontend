@@ -1,4 +1,5 @@
 <script setup>
+  import BaseModal from '@/components/modals/BaseModal.vue'
   import Echo from 'laravel-echo'
   import Pusher from 'pusher-js'
 
@@ -17,4 +18,5 @@
 
 <template>
   <router-view class="text-gray-900 dark:text-blue-50"></router-view>
+  <BaseModal />
 </template>

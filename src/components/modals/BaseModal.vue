@@ -1,24 +1,25 @@
 <script setup>
-    // import { useModalStore } from '@/stores/modalStore'
-    // import { onMounted, onUnmounted } from 'vue'
+    import { modalStore } from '@/stores/modal'
+    import { onMounted, onUnmounted } from 'vue'
+    import CloseModalButton from '@/components/modals/CloseButton.vue'
 
-    // const modal = useModalStore()
+    const modal = modalStore()
     
-    // const keydownListener = (event) => {
-    //     if (event.key === "Escape") modal.close();
-    // }
+    const keydownListener = (event) => {
+        if (event.key === "Escape") modal.close();
+    }
 
-    // onMounted(() => {
-    //     document.addEventListener("keydown", keydownListener);
-    // });
+    onMounted(() => {
+        document.addEventListener("keydown", keydownListener);
+    });
 
-    // onUnmounted(() => {
-    //     document.removeEventListener("keydown", keydownListener);
-    // });
+    onUnmounted(() => {
+        document.removeEventListener("keydown", keydownListener);
+    });
 </script>
 
 <template>
-    <!-- <Teleport to="body">
+    <Teleport to="body">
   
         <Transition name="modal-fade">
         
@@ -30,17 +31,23 @@
                 tabindex="-1"
                 class="fixed top-0 left-0 z-[999] w-full h-dvh bg-black bg-opacity-80 flex items-center justify-center">
 
-                <component :is="modal.content" />
+                <div class="bg-white rounded-2xl p-6 space-y-6">
+                    <div class="flex items-center gap-8 justify-between">
+                        <p class="font-bold text-2xl">Logout</p>
+                        <CloseModalButton />
+                    </div>
+                    <component :is="modal.content" />
+                </div>
 
             </div>
 
         </Transition>
   
-    </Teleport> -->
+    </Teleport>
 </template>
 
 <style scoped>
-    /* .modal-fade-enter-from,
+    .modal-fade-enter-from,
     .modal-fade-leave-to {
         opacity: 0;
     }
@@ -48,5 +55,5 @@
     .modal-fade-enter-active,
     .modal-fade-leave-active {
         transition: 0.25s ease all;
-    } */
+    }
 </style>
