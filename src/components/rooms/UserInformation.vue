@@ -14,7 +14,7 @@
 </script>
 
 <template>
-    <div @click="openMenuModal" class="flex gap-2 p-3 rounded-lg cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700">
+    <div @click="openMenuModal" class="max-w-72 flex gap-2 p-3 rounded-lg cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700">
         <!-- AVATAR -->
         <div class="size-12 rounded-full bg-teal-600 shadow-lg"></div>
         <!-- FULLNAME -->
