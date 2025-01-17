@@ -7,7 +7,7 @@
     const modal = modalStore()
 
     const openMenuModal = () => {
-        modal.open(MenuModal)
+        modal.open(MenuModal, { title: 'Menu' })
     }
 
     await profile.get()

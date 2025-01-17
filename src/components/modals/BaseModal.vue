@@ -33,10 +33,10 @@
 
                 <div class="bg-white rounded-2xl p-6 space-y-6">
                     <div class="flex items-center gap-8 justify-between">
-                        <p class="font-bold text-2xl">Logout</p>
+                        <p class="font-bold text-2xl">{{ modal.props.title }}</p>
                         <CloseModalButton />
                     </div>
-                    <component :is="modal.content" />
+                    <component :is="modal.content" v-bind="modal.props" />
                 </div>
 
             </div>

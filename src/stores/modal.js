@@ -7,20 +7,23 @@ export const modalStore = defineStore('modal', () => {
     /*                                   STATES                                   */
     /* -------------------------------------------------------------------------- */
     const content = ref(null)
+    const props = ref({})
     const body = document.body
 
 
     /* -------------------------------------------------------------------------- */
     /*                                   METHODS                                  */
     /* -------------------------------------------------------------------------- */
-    const open = (modal) => {
+    const open = (modal, modalProps = {}) => {
         blockScrolling()
         content.value = markRaw(modal)
+        props.value = modalProps
     }
 
     const close = () => {
         allowScrolling()
         content.value = null
+        props.value = {}
     }
 
 
@@ -43,6 +46,7 @@ export const modalStore = defineStore('modal', () => {
     /* -------------------------------------------------------------------------- */
     return {
         content,
+        props,
         open,
         close
     }

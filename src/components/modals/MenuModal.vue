@@ -5,7 +5,7 @@
     const modal = modalStore()
 
     const confirmLogout = () => {
-        modal.open(LogoutModal)
+        modal.open(LogoutModal, { title: 'Logout' })
     }
 </script>
 
