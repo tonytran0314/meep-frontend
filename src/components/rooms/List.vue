@@ -14,7 +14,7 @@
     <div class="flex-1 overflow-auto space-y-4">
         <p class="text-lg text-gray-400">Conversations</p>
         <div>
-            <div v-for="room in room.list" @click="openRoom(room.id)" class="flex gap-2 p-3 rounded-lg cursor-pointer hover:bg-gray-200">
+            <div v-for="room in room.list" @click="openRoom(room.id)" class="flex gap-2 p-3 rounded-lg cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700">
                 <!-- AVATAR -->
                 <div class="size-12 rounded-full bg-gray-500 shadow-lg"></div>
                 <!-- FULLNAME -->
