@@ -1,5 +1,6 @@
 <script setup>
     import UserInformation from '@/components/rooms/UserInformation.vue'
+    import SearchBar from '@/components/rooms/SearchBar.vue'
     import RoomList from '@/components/rooms/List.vue'
     import { authStore } from '@/stores/authentication'
 
@@ -11,6 +12,7 @@
         <Suspense>
             <div class="flex flex-col gap-8">
                 <UserInformation />
+                <SearchBar />
                 <RoomList />
             </div>
             <template #fallback>
