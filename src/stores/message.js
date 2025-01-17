@@ -8,23 +8,7 @@ export const messageStore = defineStore('message', () => {
     /*                                   STATES                                   */
     /* -------------------------------------------------------------------------- */
     const newMessage = ref(null)
-    const messages = ref([
-        {
-            "content": "this is a chat line #1"
-        },
-        {
-            "content": "this is a chat line #2"
-        },
-        {
-            "content": "this is a chat line #3"
-        },
-        {
-            "content": "this is a chat line #4"
-        },
-        {
-            "content": "this is a chat line #5"
-        }
-    ])
+    const messages = ref(null)
 
 
     /* -------------------------------------------------------------------------- */
