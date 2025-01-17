@@ -21,15 +21,15 @@
 
 <template>
     <div class="space-y-1">
-        <div @click="openProfile" class="hover:bg-gray-200 rounded-lg cursor-pointer flex items-center gap-2 px-6 py-3">
+        <div @click="openProfile" class="hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg cursor-pointer flex items-center gap-2 px-6 py-3">
             <font-awesome-icon :icon="['fas', 'user']" />
             <p>Profile</p>
         </div>
-        <div @click="openSettings" class="hover:bg-gray-200 rounded-lg cursor-pointer flex items-center gap-2 px-6 py-3">
+        <div @click="openSettings" class="hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg cursor-pointer flex items-center gap-2 px-6 py-3">
             <font-awesome-icon :icon="['fas', 'gear']" />
             <p>Settings</p>
         </div>
-        <div @click="confirmLogout" class="hover:bg-gray-200 rounded-lg cursor-pointer flex items-center gap-2 px-6 py-3">
+        <div @click="confirmLogout" class="hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg cursor-pointer flex items-center gap-2 px-6 py-3">
             <font-awesome-icon :icon="['fas', 'right-from-bracket']" />
             <p>Logout</p>
         </div>
