@@ -13,10 +13,14 @@
     // listen to the new message
     window.Echo.channel('public-chat').listen('.SendMessage', (event) => {
         console.log('Message Received: ' + event.message)
+        messages.value.unshift(
+            {
+                "content": event.message 
+            }
+        )
     })
 
     watch(() => route.params.roomId, (newRoomId) => {
-        console.log('The room id now is: ' + newRoomId)
         currentRoomId.value = newRoomId
         message.get(newRoomId)
     })

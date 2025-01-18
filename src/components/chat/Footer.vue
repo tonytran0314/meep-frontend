@@ -1,12 +1,17 @@
 <script setup>
     import { messageStore } from '@/stores/message'
     import { storeToRefs } from 'pinia'
+    import { useRoute } from 'vue-router'
 
+    const route = useRoute()
     const message = messageStore()
     const { newMessage } = storeToRefs(message)
 
     const sendMessage = () => {
-        message.send()
+        message.send({
+            'room_id': route.params.roomId,
+            'content': newMessage.value
+        })
         message.addNewMessageToMessageListTemporary()
         message.clearNewMessageContent()
     }

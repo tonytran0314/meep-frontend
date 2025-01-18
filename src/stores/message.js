@@ -14,13 +14,9 @@ export const messageStore = defineStore('message', () => {
     /* -------------------------------------------------------------------------- */
     /*                                     METHODS                                  */
     /* -------------------------------------------------------------------------- */
-    const send = async () => {
+    const send = async (message) => {
         try {
-            await api.post('/messages', {
-                'room_id': 1,
-                'user_id': 2,
-                'content': newMessage.value
-            })
+            await api.post('/messages', message)
         } catch (error) {
             console.log(error)
         }
