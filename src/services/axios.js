@@ -36,3 +36,9 @@ export const csrf = axios.create({
   withCredentials: true,
   withXSRFToken: true
 })
+
+export const broadcast = axios.create({
+  baseURL: import.meta.env.VITE_BROADCAST_URL,
+  withCredentials: true,
+  withXSRFToken: true
+})

@@ -9,9 +9,11 @@
     const currentRoomId = ref(route.params.roomId)
     const { messages } = storeToRefs(message)
     
-
-    // listen to the new message
-    window.Echo.channel('public-chat').listen('.SendMessage', (event) => {
+    // listen to private room
+    // put this to watch
+    // if currentRoomId.value !== null (or '' or undefined), listen
+    window.Echo.private(`room.${currentRoomId.value}`)
+    .listen('.SendMessage', (event) => {
         console.log('Message Received: ' + event.message)
         messages.value.unshift(
             {
