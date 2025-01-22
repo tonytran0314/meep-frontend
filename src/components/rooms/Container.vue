@@ -1,6 +1,6 @@
 <script setup>
     import UserInformation from '@/components/rooms/UserInformation.vue'
-    import SearchBar from '@/components/rooms/SearchBar.vue'
+    import Activities from '@/components/rooms/Activities.vue'
     import RoomList from '@/components/rooms/List.vue'
     import Loading from '@/components/rooms/Loading.vue'
 </script>
@@ -8,12 +8,9 @@
 <template>
     <div class="bg-white dark:bg-gray-800 shadow-lg rounded-2xl h-full w-96 p-4">
         <Suspense>
-            <div class="flex flex-col gap-8">
-                <div class="flex items-center justify-between">
-                    <UserInformation />
-                    <font-awesome-icon :icon="['fas', 'bell']" class="size-5 text-gray-700 dark:text-blue-50 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer p-2 rounded-full" />
-                </div>
-                <SearchBar />
+            <div class="flex flex-col gap-4">
+                <UserInformation />
+                <Activities />
                 <RoomList />
             </div>
             <template #fallback>

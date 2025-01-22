@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <div class="flex flex-col gap-8">
+    <div class="flex flex-col gap-4">
         <div class="h-[76px] bg-gray-200 dark:bg-gray-700 animate-pulse rounded-xl"></div>
         <div class="h-10 bg-gray-200 dark:bg-gray-700 animate-pulse rounded-full"></div>
         <div class="space-y-4">
