@@ -1,9 +1,14 @@
 <script setup>
     import { modalStore } from '@/stores/modal'
+    import { profileStore } from '@/stores/profile'
+    import { storeToRefs } from 'pinia'
+
     import MenuModal from '@/components/modals/MenuModal.vue'
     import TextField from '@/components/form/TextField.vue'
     
     const modal = modalStore()
+    const profile = profileStore()
+    const { name, username } = storeToRefs(profile)
     
     const back = () => {
         modal.open(MenuModal, { title: 'Menu' })
@@ -19,11 +24,13 @@
         <div class="space-y-4">
         <!-- missing v-model and error. Check login for more -->
             <TextField
+                v-model="username"
                 label="Username"
                 type="text"
                 name="username"
             />
             <TextField
+                v-model="name"
                 label="Fullname"
                 type="text"
                 name="fullname"
