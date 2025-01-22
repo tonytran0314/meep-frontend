@@ -1,6 +1,7 @@
 import { defineStore } from "pinia"
 import { ref } from "vue"
 import { api } from '@/services/axios.js'
+import { profileStore } from '@/stores/profile'
 
 export const messageStore = defineStore('message', () => {
 
@@ -9,6 +10,7 @@ export const messageStore = defineStore('message', () => {
     /* -------------------------------------------------------------------------- */
     const newMessage = ref(null)
     const messages = ref(null)
+    const profile = profileStore()
 
 
     /* -------------------------------------------------------------------------- */
@@ -29,6 +31,7 @@ export const messageStore = defineStore('message', () => {
     const addNewMessageToMessageListTemporary = () => {
         messages.value.unshift(
             {
+                "user_id": profile.id,
                 "content": newMessage.value 
             }
         )
