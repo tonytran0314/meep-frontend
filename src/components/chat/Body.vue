@@ -1,25 +1,32 @@
 <script setup>
     import { messageStore } from '@/stores/message'
+    import { profileStore } from '@/stores/profile'
     import { storeToRefs } from 'pinia'
     import { watch, ref } from 'vue'
     import { useRoute } from 'vue-router'
 
     const route = useRoute()
     const message = messageStore()
+    const profile = profileStore()
     const currentRoomId = ref(route.params.roomId)
+
     const { messages } = storeToRefs(message)
+    const { id } = storeToRefs(profile)
     
     // listen to private room
     // put this to watch
     // if currentRoomId.value !== null (or '' or undefined), listen
     window.Echo.private(`room.${currentRoomId.value}`)
     .listen('.SendMessage', (event) => {
-        console.log('Message Received: ' + event.message)
-        messages.value.unshift(
-            {
-                "content": event.message 
-            }
-        )
+        if(event.message.user_id !== id.value) {
+            console.log('Message Received: ' + event.message.content)
+            console.log('Sender: ' + event.message.user_id)
+            messages.value.unshift(
+                {
+                    "content": event.message.content 
+                }
+            )
+        }
     })
 
     watch(() => route.params.roomId, (newRoomId) => {

@@ -7,6 +7,7 @@ export const profileStore = defineStore('profile', () => {
     /* -------------------------------------------------------------------------- */
     /*                                   STATES                                   */
     /* -------------------------------------------------------------------------- */
+    const id = ref(null)
     const name = ref(null)
 
 
@@ -16,6 +17,7 @@ export const profileStore = defineStore('profile', () => {
     const get = async () => {
         try {
             const result = await api.get('/profile')
+            id.value = result.data.data.id
             name.value = result.data.data.name
         } catch (error) {
             console.log(error)
@@ -33,6 +35,7 @@ export const profileStore = defineStore('profile', () => {
     /*                                   RETURN                                   */
     /* -------------------------------------------------------------------------- */
     return {
+        id,
         name,
         get,
     }
