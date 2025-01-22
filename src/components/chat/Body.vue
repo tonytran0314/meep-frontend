@@ -14,7 +14,6 @@
     const { id } = storeToRefs(profile)
     
     // listen to private room
-    // put this to watch
     // if currentRoomId.value !== null (or '' or undefined), listen
     window.Echo.private(`room.${currentRoomId.value}`)
     .listen('.SendMessage', (event) => {
@@ -32,6 +31,22 @@
     watch(() => route.params.roomId, (newRoomId) => {
         currentRoomId.value = newRoomId
         message.get(newRoomId)
+
+        
+        // listen to private room
+        // if currentRoomId.value !== null (or '' or undefined), listen
+        window.Echo.private(`room.${newRoomId}`)
+        .listen('.SendMessage', (event) => {
+            if(event.message.user_id !== id.value) {
+                console.log('Message Received: ' + event.message.content)
+                console.log('Sender: ' + event.message.user_id)
+                messages.value.unshift(
+                    {
+                        "content": event.message.content 
+                    }
+                )
+            }
+        })
     })
 
     message.get(currentRoomId.value)
