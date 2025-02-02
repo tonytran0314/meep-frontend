@@ -26,6 +26,22 @@ export const friendStore = defineStore('friend', () => {
         }
     }
 
+    const sendFriendRequestTo = async (userId) => {
+        try {
+            await api.post('/add-friend', { userId })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const markFriendAsAdded = (userId) => {
+        foundFriends.value.forEach(friend => {
+            if(friend.id === userId) {
+                friend.markAsAdded = true
+            }
+        });
+    }
+
 
 
     /* -------------------------------------------------------------------------- */
@@ -42,6 +58,8 @@ export const friendStore = defineStore('friend', () => {
         searchKeyword,
         searching,
         search,
+        sendFriendRequestTo,
+        markFriendAsAdded
     }
 
 })
