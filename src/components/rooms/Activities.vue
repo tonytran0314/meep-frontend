@@ -19,7 +19,7 @@
         <font-awesome-icon :icon="['fas', 'user-plus']" @click="openAddFriendModal" class="size-6 text-gray-700 dark:text-blue-50 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer p-3 rounded-full" />
         <div class="relative">
             <font-awesome-icon :icon="['fas', 'bell']" @click="openNotificationModal" class="size-6 text-gray-700 dark:text-blue-50 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer p-3 rounded-full" />
-            <span class="bg-red-600 rounded-full text-xs absolute -top-1.5 -right-1.5 size-5 flex items-center justify-center">9+</span>
+            <span class="bg-red-400 rounded-full text-xs absolute top-0 right-0 size-3 flex items-center justify-center"></span>
         </div>
         <font-awesome-icon :icon="['fas', 'comment-medical']" class="size-6 text-gray-700 dark:text-blue-50 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer p-3 rounded-full" />
     </div>
