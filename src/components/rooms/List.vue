@@ -16,7 +16,7 @@
     <div class="flex-1 overflow-auto space-y-4">
         <p class="text-lg text-gray-400">Conversations</p>
         <div>
-            <Room v-for="room in room.list" :roomId="room.id" :latestMessage="room.latestMessage.content" @click="openRoom(room.id)" />
+            <Room v-for="room in room.list" :roomId="room.id" :latestMessage="room.latestMessage?.content" @click="openRoom(room.id)" />
         </div>
     </div>
 </template>
