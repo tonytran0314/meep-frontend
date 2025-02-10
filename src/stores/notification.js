@@ -27,6 +27,10 @@ export const notificationStore = defineStore('notification', () => {
         list.value.unshift(notificationObject)
     }
 
+    const removeFromList = (notificationObject) => {
+        list.value = list.value.filter(object => JSON.stringify(object) !== JSON.stringify(notificationObject))
+    }
+
 
     /* -------------------------------------------------------------------------- */
     /*                                   RETURN                                   */
@@ -35,7 +39,8 @@ export const notificationStore = defineStore('notification', () => {
         list,
         newNotificationIndicator,
         get,
-        addToList
+        addToList,
+        removeFromList
     }
 
 })

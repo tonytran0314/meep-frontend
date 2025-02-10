@@ -12,6 +12,6 @@
     <!-- currently, there are 2 types of notifications: friend request and friend accept -->
     <div class="h-96 space-y-3 overflow-auto">
         <!-- notification items -->
-        <FriendRequest v-for="notification in list" :fullname="notification.senderName" />
+        <FriendRequest v-for="notification in list" :notificationObject="notification" />
     </div>
 </template>
