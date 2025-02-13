@@ -7,7 +7,7 @@ export const notificationStore = defineStore('notification', () => {
     /* -------------------------------------------------------------------------- */
     /*                                   STATES                                   */
     /* -------------------------------------------------------------------------- */
-    const list = ref(null)
+    const list = ref([])
     const newNotificationIndicator = ref(false)
 
 
