@@ -55,6 +55,19 @@ export const friendStore = defineStore('friend', () => {
         }
     }
 
+    const acceptAddFriendRequest = async (addFriendRequest) => {
+        try {
+            await api.post('/accept-friend', 
+                { 
+                    senderId: addFriendRequest.senderId,
+                    receiverId: addFriendRequest.receiverId
+                }
+            )
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
 
     /* -------------------------------------------------------------------------- */
     /*                                LOCAL METHODS                               */
@@ -72,7 +85,8 @@ export const friendStore = defineStore('friend', () => {
         search,
         sendFriendRequestTo,
         markFriendAsAdded,
-        rejectAddFriendRequest
+        rejectAddFriendRequest,
+        acceptAddFriendRequest
     }
 
 })

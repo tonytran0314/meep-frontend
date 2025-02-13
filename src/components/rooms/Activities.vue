@@ -23,6 +23,7 @@ import { onMounted } from 'vue'
         window.Echo
         .private(`notification.${profile.id}`)
         .listen('.NewNotification', (event) => {
+            console.log(event)
             notification.addToList(event.notification)
             notification.newNotifcationIndicator = true
         })

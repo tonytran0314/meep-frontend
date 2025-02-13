@@ -9,7 +9,7 @@ export const roomStore = defineStore('room', () => {
     /*                                   STATES                                   */
     /* -------------------------------------------------------------------------- */
     const router = useRouter()
-    const list = ref(null)
+    const list = ref([])
 
 
     /* -------------------------------------------------------------------------- */

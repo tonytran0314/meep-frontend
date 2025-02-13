@@ -20,18 +20,23 @@
         receiverId: props.notificationObject.receiverId
     }))
 
-    const removeAddFriendRequest = () => {
+    const rejectAddFriendRequest = () => {
         friend.rejectAddFriendRequest(addFriendRequest.value)
+        notification.removeFromList(props.notificationObject)
+    }
+
+    const acceptAddFriendRequest = () => {
+        friend.acceptAddFriendRequest(addFriendRequest.value)
         notification.removeFromList(props.notificationObject)
     }
 </script>
 
 <template>
     <BaseNotification class="space-y-4">
-        <p>{{ notificationObject }} has sent you a friend request</p>
+        <p>{{ notificationObject.senderName }} has sent you a friend request</p>
         <div class="space-x-2">
-            <PrimaryButton class="text-sm">Accept</PrimaryButton>
-            <SecondaryButton @click="removeAddFriendRequest" class="text-sm">Remove</SecondaryButton>
+            <PrimaryButton @click="acceptAddFriendRequest" class="text-sm">Accept</PrimaryButton>
+            <SecondaryButton @click="rejectAddFriendRequest" class="text-sm">Remove</SecondaryButton>
         </div>
     </BaseNotification>
 </template>

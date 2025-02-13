@@ -1,5 +1,5 @@
 <script setup>
-    import { ref } from 'vue'
+    import { ref, onMounted, onUnmounted } from 'vue'
 
     const props = defineProps({
         roomId: Number,
@@ -7,13 +7,23 @@
     })
 
     const previewMessage = ref(props.latestMessage)
+    let channel = null
+    
+    onMounted(() => {
+        channel = window.Echo.private(`room.${props.roomId}`)
+            .listen('.SendMessage', (event) => {
+                if(event.message.room_id === props.roomId) {
+                    previewMessage.value = event.message.content
+                }
+            })
+    })
 
-    window.Echo.private(`room.${props.roomId}`)
-        .listen('.SendMessage', (event) => {
-            if(event.message.room_id === props.roomId) {
-                previewMessage.value = event.message.content
-            }
-        })
+    onUnmounted(() => {
+        if (channel) {
+            channel.stopListening('.SendMessage')
+            channel.leave()
+        }
+    })
 </script>
 
 <template>
