@@ -31,6 +31,14 @@ export const notificationStore = defineStore('notification', () => {
         list.value = list.value.filter(object => JSON.stringify(object) !== JSON.stringify(notificationObject))
     }
 
+    const markAsSeen = async () => {
+        try {
+            await api.post('/seen-notifications', { notifications: list.value })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
 
     /* -------------------------------------------------------------------------- */
     /*                                   RETURN                                   */
@@ -40,7 +48,8 @@ export const notificationStore = defineStore('notification', () => {
         newNotificationIndicator,
         get,
         addToList,
-        removeFromList
+        removeFromList,
+        markAsSeen
     }
 
 })

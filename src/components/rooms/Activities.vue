@@ -17,6 +17,7 @@ import { onMounted } from 'vue'
 
     const openNotificationModal = () => {
         modal.open(NotificationModal, { title: 'Notifications' })
+        notification.markAsSeen()
     }
     
     onMounted(() => {
