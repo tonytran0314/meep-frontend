@@ -14,6 +14,7 @@
     const { id } = storeToRefs(profile)
     
     // listen to private room
+    // test comment
     // if currentRoomId.value !== null (or '' or undefined), listen
     window.Echo.private(`room.${currentRoomId.value}`)
     .listen('.SendMessage', (event) => {
