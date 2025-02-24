@@ -7,6 +7,7 @@ export const friendStore = defineStore('friend', () => {
     /* -------------------------------------------------------------------------- */
     /*                                   STATES                                   */
     /* -------------------------------------------------------------------------- */
+    const friendList = ref(null)
     const foundFriends = ref(null)
     const searchKeyword = ref(null)
     const searching = ref(false)
@@ -15,6 +16,16 @@ export const friendStore = defineStore('friend', () => {
     /* -------------------------------------------------------------------------- */
     /*                                   METHODS                                  */
     /* -------------------------------------------------------------------------- */
+
+    const getFriendList = async () => {
+        try {
+            const res = await api.get('/list-friends')
+            friendList.value = res.data.data
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     const search = async () => {
         try {
             searching.value = true
@@ -79,6 +90,7 @@ export const friendStore = defineStore('friend', () => {
     /*                                   RETURN                                   */
     /* -------------------------------------------------------------------------- */
     return {
+        friendList,
         foundFriends,
         searchKeyword,
         searching,
@@ -86,7 +98,8 @@ export const friendStore = defineStore('friend', () => {
         sendFriendRequestTo,
         markFriendAsAdded,
         rejectAddFriendRequest,
-        acceptAddFriendRequest
+        acceptAddFriendRequest,
+        getFriendList
     }
 
 })

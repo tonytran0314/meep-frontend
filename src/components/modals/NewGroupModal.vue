@@ -4,6 +4,7 @@
     import TextField from '@/components/form/TextField.vue'
     import LoadingButton from '@/components/buttons/LoadingButton.vue'
     import PrimaryButton from '@/components/buttons/PrimaryButton.vue'
+    import FriendList from '@/components/friends/List.vue'
 
     const newGroup = reactive({
         name: null,
@@ -27,67 +28,12 @@
             :error="newGroup.error"
         />
 
-        <div class="space-y-4">
-            <p>Friends list:</p>
-            <div class="h-72 overflow-auto space-y-4">
-                <div class="flex justify-between">
-                    <p>User full name</p>
-                    <font-awesome-icon :icon="['fas', 'check']" class="cursor-pointer bg-teal-600 size-4 p-2 flex justify-center items-center rounded-full" />
-                </div>
-                <div class="flex justify-between">
-                    <p>User full name</p>
-                    <font-awesome-icon :icon="['fas', 'plus']" class="cursor-pointer bg-gray-200 dark:bg-gray-700 size-4 p-2 hover:bg-teal-600 dark:hover:bg-teal-600 flex justify-center items-center rounded-full" />
-                </div>
-                <div class="flex justify-between">
-                    <p>User full name</p>
-                    <font-awesome-icon :icon="['fas', 'plus']" class="cursor-pointer bg-gray-200 dark:bg-gray-700 size-4 p-2 hover:bg-teal-600 dark:hover:bg-teal-600 flex justify-center items-center rounded-full" />
-                </div>
-                <div class="flex justify-between">
-                    <p>User full name</p>
-                    <font-awesome-icon :icon="['fas', 'plus']" class="cursor-pointer bg-gray-200 dark:bg-gray-700 size-4 p-2 hover:bg-teal-600 dark:hover:bg-teal-600 flex justify-center items-center rounded-full" />
-                </div>
-                <div class="flex justify-between">
-                    <p>User full name</p>
-                    <font-awesome-icon :icon="['fas', 'plus']" class="cursor-pointer bg-gray-200 dark:bg-gray-700 size-4 p-2 hover:bg-teal-600 dark:hover:bg-teal-600 flex justify-center items-center rounded-full" />
-                </div>
-                <div class="flex justify-between">
-                    <p>User full name</p>
-                    <font-awesome-icon :icon="['fas', 'plus']" class="cursor-pointer bg-gray-200 dark:bg-gray-700 size-4 p-2 hover:bg-teal-600 dark:hover:bg-teal-600 flex justify-center items-center rounded-full" />
-                </div>
-                <div class="flex justify-between">
-                    <p>User full name</p>
-                    <font-awesome-icon :icon="['fas', 'plus']" class="cursor-pointer bg-gray-200 dark:bg-gray-700 size-4 p-2 hover:bg-teal-600 dark:hover:bg-teal-600 flex justify-center items-center rounded-full" />
-                </div>
-                <div class="flex justify-between">
-                    <p>User full name</p>
-                    <font-awesome-icon :icon="['fas', 'plus']" class="cursor-pointer bg-gray-200 dark:bg-gray-700 size-4 p-2 hover:bg-teal-600 dark:hover:bg-teal-600 flex justify-center items-center rounded-full" />
-                </div>
-                <div class="flex justify-between">
-                    <p>User full name</p>
-                    <font-awesome-icon :icon="['fas', 'plus']" class="cursor-pointer bg-gray-200 dark:bg-gray-700 size-4 p-2 hover:bg-teal-600 dark:hover:bg-teal-600 flex justify-center items-center rounded-full" />
-                </div>
-                <div class="flex justify-between">
-                    <p>User full name</p>
-                    <font-awesome-icon :icon="['fas', 'plus']" class="cursor-pointer bg-gray-200 dark:bg-gray-700 size-4 p-2 hover:bg-teal-600 dark:hover:bg-teal-600 flex justify-center items-center rounded-full" />
-                </div>
-                <div class="flex justify-between">
-                    <p>User full name</p>
-                    <font-awesome-icon :icon="['fas', 'plus']" class="cursor-pointer bg-gray-200 dark:bg-gray-700 size-4 p-2 hover:bg-teal-600 dark:hover:bg-teal-600 flex justify-center items-center rounded-full" />
-                </div>
-                <div class="flex justify-between">
-                    <p>User full name</p>
-                    <font-awesome-icon :icon="['fas', 'plus']" class="cursor-pointer bg-gray-200 dark:bg-gray-700 size-4 p-2 hover:bg-teal-600 dark:hover:bg-teal-600 flex justify-center items-center rounded-full" />
-                </div>
-                <div class="flex justify-between">
-                    <p>User full name</p>
-                    <font-awesome-icon :icon="['fas', 'plus']" class="cursor-pointer bg-gray-200 dark:bg-gray-700 size-4 p-2 hover:bg-teal-600 dark:hover:bg-teal-600 flex justify-center items-center rounded-full" />
-                </div>
-                <div class="flex justify-between">
-                    <p>User full name</p>
-                    <font-awesome-icon :icon="['fas', 'plus']" class="cursor-pointer bg-gray-200 dark:bg-gray-700 size-4 p-2 hover:bg-teal-600 dark:hover:bg-teal-600 flex justify-center items-center rounded-full" />
-                </div>
-            </div>
-        </div>
+        <Suspense>
+            <FriendList />
+            <template #fallback>
+                loading friend list...
+            </template>
+        </Suspense>
 
         <LoadingButton v-if="newGroup.isLoading" class="w-full" />
         <PrimaryButton v-else type="submit" class="w-full">Create</PrimaryButton>
