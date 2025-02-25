@@ -8,7 +8,7 @@
 <template>
     <div class="bg-white dark:bg-gray-800 shadow-lg rounded-2xl h-full w-96 p-4">
         <Suspense>
-            <div class="flex flex-col gap-4">
+            <div class="flex flex-col gap-4 h-full">
                 <UserInformation />
                 <Activities />
                 <RoomList />

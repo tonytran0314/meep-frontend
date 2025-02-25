@@ -39,16 +39,13 @@
 </script>
 
 <template>
-    <div class="flex-1 overflow-auto space-y-4">
-        <p class="text-lg text-gray-400">Conversations</p>
-        <div>
-            <Room 
-                v-for="room in room.list ?? []" 
-                :key="room.id"
-                :roomId="room.id" 
-                :latestMessage="room.latestMessage?.content" 
-                @click="openRoom(room.id)" 
-            />
-        </div>
+    <div class="flex-1 space-y-1 overflow-auto">
+        <Room 
+            v-for="room in room.list ?? []" 
+            :key="room.id"
+            :roomId="room.id" 
+            :latestMessage="room.latestMessage?.content" 
+            @click="openRoom(room.id)" 
+        />
     </div>
 </template>
