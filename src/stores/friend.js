@@ -53,6 +53,22 @@ export const friendStore = defineStore('friend', () => {
         });
     }
 
+    const markAsAddedToGroup = (userId) => {
+        friendList.value.forEach(friend => {
+            if(friend.id === userId) {
+                friend.addedToGroup = true
+            }
+        });
+    }
+
+    const markAsRemovedFromGroup = (userId) => {
+        friendList.value.forEach(friend => {
+            if(friend.id === userId) {
+                friend.addedToGroup = false
+            }
+        });
+    }
+
     const rejectAddFriendRequest = async (addFriendRequest) => {
         try {
             await api.post('/reject-friend', 
@@ -97,6 +113,8 @@ export const friendStore = defineStore('friend', () => {
         search,
         sendFriendRequestTo,
         markFriendAsAdded,
+        markAsAddedToGroup,
+        markAsRemovedFromGroup,
         rejectAddFriendRequest,
         acceptAddFriendRequest,
         getFriendList
