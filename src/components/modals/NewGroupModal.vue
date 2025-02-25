@@ -1,31 +1,30 @@
 <script setup>
     import { reactive } from 'vue'
+    import { storeToRefs } from 'pinia'
+    import { groupStore } from '@/stores/group'
 
     import TextField from '@/components/form/TextField.vue'
     import LoadingButton from '@/components/buttons/LoadingButton.vue'
     import PrimaryButton from '@/components/buttons/PrimaryButton.vue'
     import FriendList from '@/components/friends/List.vue'
 
-    const newGroup = reactive({
-        name: null,
-        error: null, // temp
-        isLoading: false, // temp
-    })
+    const group = groupStore()
+    const { name, members, error, isLoading } = storeToRefs(group)
 
     const createGroup = () => {
-        console.log('created')
+        group.create()
     }
 </script>
 
 <template>
     <form @submit.prevent="createGroup" class="space-y-4 md:space-y-6">
         <TextField
-            v-model="newGroup.name"
+            v-model="name"
             label="Group name:"
             type="text"
             name="name"
             placeholder="New group name..." 
-            :error="newGroup.error"
+            :error="error"
         />
 
         <Suspense>
@@ -35,7 +34,7 @@
             </template>
         </Suspense>
 
-        <LoadingButton v-if="newGroup.isLoading" class="w-full" />
+        <LoadingButton v-if="isLoading" class="w-full" />
         <PrimaryButton v-else type="submit" class="w-full">Create</PrimaryButton>
     </form>
 </template>
