@@ -19,6 +19,7 @@ export const authStore = defineStore('authentication', () => {
         message: null
     })
     const isLoading = ref(false)
+    const isAuthenticated = ref(null)
 
 
 
@@ -33,6 +34,7 @@ export const authStore = defineStore('authentication', () => {
             const response = await api.post('/login', loginData)
 
             if (response.status === 200) {
+                isAuthenticated.value = true
                 clearError()
                 goToChat()
                 stopLoading()
@@ -49,6 +51,8 @@ export const authStore = defineStore('authentication', () => {
             startLoading()
             
             await api.post('/logout')
+            isAuthenticated.value = false
+
             goToGuestPage()
 
             stopLoading()
@@ -132,6 +136,7 @@ export const authStore = defineStore('authentication', () => {
     return {
         errors,
         isLoading,
+        isAuthenticated,
         login,
         logout,
         signup

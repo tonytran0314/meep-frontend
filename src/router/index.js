@@ -1,13 +1,17 @@
 import { createWebHistory, createRouter } from 'vue-router'
 import { api } from '@/services/axios.js'
+import { authStore } from '@/stores/authentication'
+import { storeToRefs } from 'pinia'
 
-const authenticationCheck = async () => {
-  try {
-    const res = await api.get('/is-authenticated')
-
-    return res.data.isAuthenticated
-  } catch (error) {
-    console.log(error) 
+const authenticationCheck = async (authStore) => {
+  const { isAuthenticated } = storeToRefs(authStore)
+  if(isAuthenticated.value === null) {
+    try {
+      await api.get('/messages')
+      isAuthenticated.value = true
+    } catch (error) {
+      isAuthenticated.value = false
+    }
   }
 }
 
@@ -19,14 +23,7 @@ const routes = [
   {
     path: '/',
     component: () => import('@/views/GuestView.vue'),
-    name: 'Guest',
-    // beforeEnter: (to, from, next) => {
-    //   authenticationCheck()
-    //   .then((isAuthenticated) => {
-    //     if(isAuthenticated) { next({ name: 'Dashboard'}) } 
-    //     else { next() }
-    //   })
-    // }
+    name: 'Guest'
   },
 
 
@@ -37,7 +34,14 @@ const routes = [
   {
     path: '/chat/:roomId',
     component: () => import('@/views/ChatView.vue'),
-    name: 'Chat'
+    name: 'Chat',
+    beforeEnter: async (to, from, next) => {
+      const auth = authStore()
+      await authenticationCheck(auth)
+
+      if(auth.isAuthenticated) { next() } 
+      else { next({ name: 'Login'}) }
+    }
   },
   
 
