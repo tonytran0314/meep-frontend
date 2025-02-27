@@ -17,13 +17,6 @@
                 }
             })
     })
-
-    onUnmounted(() => {
-        if (channel) {
-            channel.stopListening('.SendMessage')
-            channel.leave()
-        }
-    })
 </script>
 
 <template>
