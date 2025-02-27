@@ -98,11 +98,11 @@ const routes = [
   /* -------------------------------------------------------------------------- */
   /*                                  404 VIEW                                  */
   /* -------------------------------------------------------------------------- */
-  // {
-  //   path: '/:pathMatch(.*)*',
-  //   name: 'Not Found',
-  //   component: () => import('@/components/not_found/Container.vue'),
-  // },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'Not Found',
+    component: () => import('@/views/NotFoundView.vue'),
+  },
 ]
 
 
