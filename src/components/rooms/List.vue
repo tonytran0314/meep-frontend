@@ -40,12 +40,17 @@
 
 <template>
     <div class="flex-1 space-y-1 overflow-auto">
-        <Room 
-            v-for="room in room.list ?? []" 
-            :key="room.id"
-            :roomId="room.id" 
-            :latestMessage="room.latestMessage?.content" 
-            @click="openRoom(room.id)" 
-        />
+        <div v-if="room.list.length > 0">
+            <Room 
+                v-for="room in room.list ?? []" 
+                :key="room.id"
+                :roomId="room.id" 
+                :latestMessage="room.latestMessage?.content" 
+                @click="openRoom(room.id)" 
+            />
+        </div>
+        <div v-else>
+            there is no room
+        </div>
     </div>
 </template>
