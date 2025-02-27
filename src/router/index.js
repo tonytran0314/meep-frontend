@@ -52,13 +52,13 @@ const routes = [
   {
     path: '/login',
     component: () => import('@/views/AuthView.vue'),
-    // beforeEnter: (to, from, next) => {
-    //   authenticationCheck()
-    //   .then((isAuthenticated) => {
-    //     if(isAuthenticated) { next({ name: 'Dashboard'}) } 
-    //     else { next() }
-    //   })
-    // },
+    beforeEnter: async (to, from, next) => {
+      const auth = authStore()
+      await authenticationCheck(auth)
+
+      if(!auth.isAuthenticated) { next() } 
+      else { next({ name: 'Chat', params: { roomId: 3 } }) } // this is currently hard coding. try to fix it
+    },
     children: [
       {
         path: '',
@@ -70,13 +70,13 @@ const routes = [
   { 
     path: '/signup', 
     component: () => import('@/views/AuthView.vue'),
-    // beforeEnter: (to, from, next) => {
-    //   authenticationCheck()
-    //   .then((isAuthenticated) => {
-    //     if(isAuthenticated) { next({ name: 'Dashboard'}) } 
-    //     else { next() }
-    //   })
-    // },
+    beforeEnter: async (to, from, next) => {
+      const auth = authStore()
+      await authenticationCheck(auth)
+
+      if(!auth.isAuthenticated) { next() } 
+      else { next({ name: 'Chat', params: { roomId: 3 } }) } // this is currently hard coding. try to fix it
+    },
     children: [
       {
         path: '',
