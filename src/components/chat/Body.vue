@@ -50,21 +50,27 @@
         })
     })
 
+    // chỗ này cũng await suspense luôn để không bị hiện chữ let say hi to
     message.get(currentRoomId.value)
 </script>
 
 <template>
-    <div class="flex flex-col-reverse w-full flex-1 overflow-y-auto gap-0.5 px-2">
-        <!-- CHAT LINE -->
-        <!-- for the others text -->
-        <div v-for="message in messages" 
-            class=" px-4 py-2 max-w-[75%] rounded-full"
-            :class="(message.user_id === id) ? 'self-end bg-teal-600' : 'self-start bg-gray-200 dark:bg-gray-700'"
-        >
-            {{ message.content }}
-        </div> 
-        <!-- for my text -->
-        <!-- <div class="bg-teal-600 text-white max-w-[75%] px-4 py-2 rounded-2xl self-end">this is a chat line 3</div>
-        <div class="bg-teal-600 text-white max-w-[75%] px-4 py-2 rounded-2xl self-end">this is a chat line 4</div> -->
+    <div class="flex flex-1">
+        <div v-if="messages.length"  class="flex flex-col-reverse w-full overflow-y-auto gap-0.5 px-2">
+            <!-- CHAT LINES -->
+            <div v-for="message in messages" 
+                class=" px-4 py-2 max-w-[75%] rounded-full"
+                :class="(message.user_id === id) ? 'self-end bg-teal-600' : 'self-start bg-gray-200 dark:bg-gray-700'"
+            >
+                {{ message.content }}
+            </div> 
+        </div>
+        <div v-else class="m-auto flex flex-col items-center gap-4">
+            <div class="size-20 rounded-full bg-gray-500 shadow-lg"></div>
+            <div class="text-center">
+                <p>`User.fullname` and you are friend now</p>
+                <p>Let say hi to `User.name`</p>
+            </div>
+        </div>
     </div>
 </template>

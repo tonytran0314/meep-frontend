@@ -9,7 +9,7 @@ export const messageStore = defineStore('message', () => {
     /*                                   STATES                                   */
     /* -------------------------------------------------------------------------- */
     const newMessage = ref(null)
-    const messages = ref(null)
+    const messages = ref([])
     const profile = profileStore()
 
 
