@@ -23,7 +23,14 @@ const routes = [
   {
     path: '/',
     component: () => import('@/views/GuestView.vue'),
-    name: 'Guest'
+    name: 'Guest',
+    beforeEnter: async (to, from, next) => {
+      const auth = authStore()
+      await authenticationCheck(auth)
+
+      if(!auth.isAuthenticated) { next() } 
+      else { next({ name: 'Chat', params: { roomId: 3 } }) } // this is currently hard coding. try to fix it
+    },
   },
 
 
