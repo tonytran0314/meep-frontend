@@ -16,9 +16,9 @@
             <p class="font-bold">Trần Gia Huy: {{ currentRoomId }}</p>
         </div>
         <!-- ACTIONS: VOICE CALL, VIDEO CALL -->
-        <div class="flex items-center gap-2">
+        <!-- <div class="flex items-center gap-2">
             <font-awesome-icon :icon="['fas', 'phone']" class="text-gray-600 dark:text-gray-400 size-5 cursor-pointer hover:bg-gray-200 rounded-full p-2 dark:hover:bg-gray-700" />
             <font-awesome-icon :icon="['fas', 'video']" class="text-gray-600 dark:text-gray-400 size-5 cursor-pointer hover:bg-gray-200 rounded-full p-2 dark:hover:bg-gray-700" />
-        </div>
+        </div> -->
     </div>
 </template>

@@ -20,10 +20,10 @@
 <template>
     <div class="w-full h-12 flex items-center gap-4">
         <!-- MEDIA -->
-        <div class="flex gap-2">
+        <!-- <div class="flex gap-2">
             <font-awesome-icon :icon="['fas', 'image']" class="text-gray-600 dark:text-gray-400 size-5 cursor-pointer hover:bg-gray-200 p-2 rounded-full dark:hover:bg-gray-700" />
             <font-awesome-icon :icon="['fas', 'note-sticky']" class="text-gray-600 dark:text-gray-400 size-5 cursor-pointer hover:bg-gray-200 p-2 rounded-full dark:hover:bg-gray-700" />
-        </div>
+        </div> -->
         <!-- MESSAGE INPUT & SEND BUTTON -->
         <form @submit.prevent="sendMessage" class="flex gap-2 flex-1">
             <div class="flex items-center flex-1">

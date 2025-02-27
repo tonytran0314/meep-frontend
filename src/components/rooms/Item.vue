@@ -36,7 +36,7 @@
             <div class="flex items-center gap-2">
                 <p class="text-gray-400">{{ previewMessage }}</p>
                 <!-- <p class="text-gray-400">Preview mes... 00:00</p> -->
-                <div class="size-3 rounded-full bg-green-400"></div>
+                <!-- <div class="size-3 rounded-full bg-green-400"></div> -->
             </div>
         </div>
     </div>
