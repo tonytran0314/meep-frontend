@@ -49,8 +49,16 @@
                 @click="openRoom(room.id)" 
             />
         </div>
-        <div v-else>
-            there is no room
+        <div v-else class="m-auto flex flex-col gap-4 items-center">
+            <img src="@/assets/no-room.svg" alt="No Room Illustrator" class="size-72">
+            <div class="text-sm text-center">
+                <p>You currently don't have any conversations.</p>
+                <p>Please feel free to add some friends to start chatting.</p>
+            </div>
+            <div class="bg-teal-600 flex justify-center items-center rounded-lg text-white cursor-pointer py-2 px-4 gap-4 hover:bg-teal-500">
+                <font-awesome-icon :icon="['fas', 'user-plus']" class="size-5" />
+                <p class="text-sm">Find friends</p>
+            </div>
         </div>
     </div>
 </template>

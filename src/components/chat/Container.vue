@@ -16,8 +16,16 @@
             <ChatBody />
             <ChatFooter />
         </div>
-        <div v-else>
-            there is no room
+        <div v-else class="m-auto flex flex-col gap-4 text-center">
+            <img src="@/assets/no-room.svg" alt="No Room Illustrator" class="size-96">
+            <div>
+                <p>You currently don't have any conversations.</p>
+                <p>Please feel free to add some friends to start chatting.</p>
+            </div>
+            <div class="bg-teal-600 flex justify-center items-center rounded-lg text-white cursor-pointer py-3 gap-4 hover:bg-teal-500">
+                <font-awesome-icon :icon="['fas', 'user-plus']" class="size-6" />
+                <p>Find friends</p>
+            </div>
         </div>
     </div>
 </template>
