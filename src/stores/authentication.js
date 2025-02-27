@@ -85,7 +85,7 @@ export const authStore = defineStore('authentication', () => {
     /*                                LOCAL METHODS                               */
     /* -------------------------------------------------------------------------- */
     const goToChat = () => {
-        router.push({ name: 'Chat', params: { roomId: 3 } })
+        router.push({ name: 'Chat' })
     }
 
     const goToLoginPage = () => {

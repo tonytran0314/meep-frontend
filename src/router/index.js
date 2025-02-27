@@ -29,7 +29,7 @@ const routes = [
       await authenticationCheck(auth)
 
       if(!auth.isAuthenticated) { next() } 
-      else { next({ name: 'Chat', params: { roomId: 3 } }) } // this is currently hard coding. try to fix it
+      else { next({ name: 'Chat' }) }
     },
   },
 
@@ -39,7 +39,7 @@ const routes = [
   /*                                  CHAT VIEW                                 */
   /* -------------------------------------------------------------------------- */
   {
-    path: '/chat/:roomId',
+    path: '/chat/:roomId?',
     component: () => import('@/views/ChatView.vue'),
     name: 'Chat',
     beforeEnter: async (to, from, next) => {
@@ -64,7 +64,7 @@ const routes = [
       await authenticationCheck(auth)
 
       if(!auth.isAuthenticated) { next() } 
-      else { next({ name: 'Chat', params: { roomId: 3 } }) } // this is currently hard coding. try to fix it
+      else { next({ name: 'Chat' }) } 
     },
     children: [
       {
@@ -82,7 +82,7 @@ const routes = [
       await authenticationCheck(auth)
 
       if(!auth.isAuthenticated) { next() } 
-      else { next({ name: 'Chat', params: { roomId: 3 } }) } // this is currently hard coding. try to fix it
+      else { next({ name: 'Chat' }) }
     },
     children: [
       {

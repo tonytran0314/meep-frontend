@@ -1,21 +1,27 @@
 <script setup>
+    import { watch, ref } from 'vue'
+    import { storeToRefs } from 'pinia'
+    import { useRoute } from 'vue-router'
+    import { roomStore } from '@/stores/room'
     import { messageStore } from '@/stores/message'
     import { profileStore } from '@/stores/profile'
-    import { storeToRefs } from 'pinia'
-    import { watch, ref } from 'vue'
-    import { useRoute } from 'vue-router'
 
     const route = useRoute()
+    const room = roomStore()
     const message = messageStore()
     const profile = profileStore()
     const currentRoomId = ref(route.params.roomId)
 
-    const { messages } = storeToRefs(message)
+    const { list } = storeToRefs(room)
     const { id } = storeToRefs(profile)
+    const { messages } = storeToRefs(message)
+
+    if(currentRoomId.value === '' || currentRoomId.value === null || currentRoomId.value === undefined || currentRoomId.value < 1 || !Number.isInteger(currentRoomId.value)) {
+        currentRoomId.value = list.value[0].id
+        room.open(currentRoomId.value)
+    }
     
     // listen to private room
-    // test comment
-    // if currentRoomId.value !== null (or '' or undefined), listen
     window.Echo.private(`room.${currentRoomId.value}`)
     .listen('.SendMessage', (event) => {
         if(event.message.user_id !== id.value) {
@@ -35,7 +41,6 @@
 
         
         // listen to private room
-        // if currentRoomId.value !== null (or '' or undefined), listen
         window.Echo.private(`room.${newRoomId}`)
         .listen('.SendMessage', (event) => {
             if(event.message.user_id !== id.value) {
