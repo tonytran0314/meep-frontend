@@ -29,13 +29,10 @@
         window.Echo
         .private(`notification.${profile.id}`)
         .listen('.NewNotification', (event) => {
-            console.log(event)
             notification.addToList(event.notification)
             notification.newNotifcationIndicator = true
         })
     })
-
-    await notification.get()
 </script>
 
 <template>

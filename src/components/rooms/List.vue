@@ -34,8 +34,6 @@
     watch(() => room.list.length, () => {
         subscribeToRooms()
     })
-
-    await room.get()
 </script>
 
 <template>

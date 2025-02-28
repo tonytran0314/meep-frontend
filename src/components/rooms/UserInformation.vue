@@ -9,8 +9,6 @@
     const openMenuModal = () => {
         modal.open(MenuModal, { title: 'Menu' })
     }
-
-    await profile.get()
 </script>
 
 <template>

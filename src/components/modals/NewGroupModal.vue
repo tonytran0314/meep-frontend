@@ -27,12 +27,7 @@
             :error="error"
         />
 
-        <Suspense>
-            <FriendList />
-            <template #fallback>
-                loading friend list...
-            </template>
-        </Suspense>
+        <FriendList />
 
         <LoadingButton v-if="isLoading" class="w-full" />
         <PrimaryButton v-else type="submit" class="w-full">Create</PrimaryButton>
