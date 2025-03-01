@@ -1,62 +1,20 @@
 <script setup>
-    import { watch, ref } from 'vue'
     import { storeToRefs } from 'pinia'
-    import { useRoute } from 'vue-router'
     import { roomStore } from '@/stores/room'
-    import { messageStore } from '@/stores/message'
     import { profileStore } from '@/stores/profile'
 
-    const route = useRoute()
     const room = roomStore()
-    const message = messageStore()
     const profile = profileStore()
-    const currentRoomId = ref(route.params.roomId)
 
-    const { list } = storeToRefs(room)
+    const { currentRoom } = storeToRefs(room)
     const { id } = storeToRefs(profile)
-    const { messages } = storeToRefs(message)
-
-    if(currentRoomId.value === '' || currentRoomId.value === null || currentRoomId.value === undefined || currentRoomId.value < 1 || !Number.isInteger(currentRoomId.value)) {
-        currentRoomId.value = list.value[0].id
-        room.open(currentRoomId.value)
-    }
-    
-    // listen to private room
-    window.Echo.private(`room.${currentRoomId.value}`)
-    .listen('.SendMessage', (event) => {
-        if(event.message.user_id !== id.value) {
-            messages.value.unshift(
-                {
-                    "content": event.message.content 
-                }
-            )
-        }
-    })
-
-    watch(() => route.params.roomId, (newRoomId) => {
-        currentRoomId.value = newRoomId
-        message.get(newRoomId)
-
-        
-        // listen to private room
-        window.Echo.private(`room.${newRoomId}`)
-        .listen('.SendMessage', (event) => {
-            if(event.message.user_id !== id.value) {
-                messages.value.unshift(
-                    {
-                        "content": event.message.content 
-                    }
-                )
-            }
-        })
-    })
 </script>
 
 <template>
     <div class="flex flex-1">
-        <div v-if="messages.length"  class="flex flex-col-reverse w-full overflow-y-auto gap-0.5 px-2">
+        <div v-if="currentRoom.messages.length"  class="flex flex-col-reverse w-full overflow-y-auto gap-0.5 px-2">
             <!-- CHAT LINES -->
-            <div v-for="message in messages" 
+            <div v-for="message in currentRoom.messages" 
                 class=" px-4 py-2 max-w-[75%] rounded-full"
                 :class="(message.user_id === id) ? 'self-end bg-teal-600' : 'self-start bg-gray-200 dark:bg-gray-700'"
             >

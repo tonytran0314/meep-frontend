@@ -10,6 +10,7 @@ export const roomStore = defineStore('room', () => {
     /* -------------------------------------------------------------------------- */
     const router = useRouter()
     const list = ref([])
+    const currentRoom = ref(null)
 
 
     /* -------------------------------------------------------------------------- */
@@ -24,8 +25,15 @@ export const roomStore = defineStore('room', () => {
         }
     }
 
-    const open = (roomId) => {
-        router.push({ name: 'Chat', params: { roomId: roomId } })
+    const open = async (roomId) => {
+        try {
+            router.push({ name: 'Chat', params: { roomId: roomId } })
+            
+            const res = await api.get(`/rooms/${roomId}`)
+            currentRoom.value = res.data.data
+        } catch (error) {
+            console.log(error)
+        }
     }
 
 
@@ -40,6 +48,7 @@ export const roomStore = defineStore('room', () => {
     /* -------------------------------------------------------------------------- */
     return {
         list,
+        currentRoom,
         get,
         open
     }
