@@ -1,9 +1,13 @@
 <script setup>
     import { useRoute } from 'vue-router'
-    import { ref } from 'vue'
+    import { ref, watch } from 'vue'
 
     const route = useRoute()
     const currentRoomId = ref(route.params.roomId)
+
+    watch(() => route.params.roomId, (newRoomId) => {
+        currentRoomId.value = newRoomId
+    })
 </script>
 
 <template>
@@ -13,7 +17,7 @@
             <!-- AVATAR -->
             <div class="size-12 rounded-full bg-gray-500 shadow-lg"></div>
             <!-- PERSON OR GROUP NAME -->
-            <p class="font-bold">Trần Gia Huy: {{ currentRoomId }}</p>
+            <p class="font-bold">Room ID: {{ currentRoomId }}</p>
         </div>
         <!-- ACTIONS: VOICE CALL, VIDEO CALL -->
         <!-- <div class="flex items-center gap-2">
