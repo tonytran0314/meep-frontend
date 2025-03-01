@@ -11,7 +11,7 @@
 </script>
 
 <template>
-    <div class="w-full h-12 flex justify-between">
+    <div class="w-full h-12 flex justify-between items-center">
         <!-- CHATTING PERSON OR GROUP INFO -->
         <div class="flex items-center gap-2">
             <!-- AVATAR -->
@@ -24,5 +24,8 @@
             <font-awesome-icon :icon="['fas', 'phone']" class="text-gray-600 dark:text-gray-400 size-5 cursor-pointer hover:bg-gray-200 rounded-full p-2 dark:hover:bg-gray-700" />
             <font-awesome-icon :icon="['fas', 'video']" class="text-gray-600 dark:text-gray-400 size-5 cursor-pointer hover:bg-gray-200 rounded-full p-2 dark:hover:bg-gray-700" />
         </div> -->
+        <div>
+            <font-awesome-icon :icon="['fas', 'ellipsis']" class="size-5 p-1.5 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer text-gray-700 dark:text-blue-50" />
+        </div>
     </div>
 </template>

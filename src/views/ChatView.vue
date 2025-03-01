@@ -13,7 +13,6 @@
     import { notificationStore } from '@/stores/notification' 
     
     const isPageLoading = ref(false)
-    const isChatLoading = ref(false)
 
     const route = useRoute()
     const room = roomStore()

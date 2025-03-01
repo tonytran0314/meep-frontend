@@ -25,8 +25,6 @@
     window.Echo.private(`room.${currentRoomId.value}`)
     .listen('.SendMessage', (event) => {
         if(event.message.user_id !== id.value) {
-            console.log('Message Received: ' + event.message.content)
-            console.log('Sender: ' + event.message.user_id)
             messages.value.unshift(
                 {
                     "content": event.message.content 
@@ -44,8 +42,6 @@
         window.Echo.private(`room.${newRoomId}`)
         .listen('.SendMessage', (event) => {
             if(event.message.user_id !== id.value) {
-                console.log('Message Received: ' + event.message.content)
-                console.log('Sender: ' + event.message.user_id)
                 messages.value.unshift(
                     {
                         "content": event.message.content 
@@ -54,9 +50,6 @@
             }
         })
     })
-
-    // chỗ này cũng await suspense luôn để không bị hiện chữ let say hi to
-    message.get(currentRoomId.value)
 </script>
 
 <template>
