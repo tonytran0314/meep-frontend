@@ -3,7 +3,11 @@
     import { storeToRefs } from 'pinia'
     import { roomStore } from '@/stores/room'
     import { onClickOutside } from '@vueuse/core'
+    import { modalStore } from '@/stores/modal'
 
+    import AddGroupMembers from '@/components/modals/AddGroupMembers.vue'
+
+    const modal = modalStore()
     const room = roomStore()
     const { currentRoom } = storeToRefs(room)
 
@@ -17,6 +21,10 @@
     onClickOutside(groupMenu, () => {
         isGroupMenuOpen.value = false
     })
+
+    const openAddGroupMembersModal = () => {
+        modal.open(AddGroupMembers, { title: 'Add members to group' })
+    }
 </script>
 
 <template>
@@ -36,11 +44,11 @@
         <div v-if="currentRoom.isGroup" class="relative" ref="groupMenu">
             <font-awesome-icon @click="toggleGroupMenu" :icon="['fas', 'ellipsis']" class="size-5 p-1.5 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer text-gray-700 dark:text-blue-50" />
             <div v-if="isGroupMenuOpen" class="bg-white dark:bg-gray-600 text-gray-900 dark:text-blue-50 absolute right-0 rounded-lg flex flex-col min-w-44 shadow-lg">
-                <div class="rounded-lg cursor-pointer flex justify-center items-center gap-2 hover:bg-gray-200 dark:hover:bg-gray-500 p-3">
+                <!-- <div class="rounded-lg cursor-pointer flex justify-center items-center gap-2 hover:bg-gray-200 dark:hover:bg-gray-500 p-3">
                     <font-awesome-icon :icon="['fas', 'pen-to-square']" />
                     <p>Edit group info</p>
-                </div>
-                <div class="rounded-lg cursor-pointer flex justify-center items-center gap-2 hover:bg-gray-200 dark:hover:bg-gray-500 p-3">
+                </div> -->
+                <div @click="openAddGroupMembersModal" class="rounded-lg cursor-pointer flex justify-center items-center gap-2 hover:bg-gray-200 dark:hover:bg-gray-500 p-3">
                     <font-awesome-icon :icon="['fas', 'user-plus']" />
                     <p>Add members</p>
                 </div>
