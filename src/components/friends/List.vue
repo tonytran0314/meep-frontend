@@ -18,7 +18,7 @@
     }
 
     if(friendList.value === null) {
-        await friend.getFriendList()
+        friend.getFriendList()
     }
 </script>
 
