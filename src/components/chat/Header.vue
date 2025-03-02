@@ -1,10 +1,22 @@
 <script setup>
+    import { ref } from 'vue'
     import { storeToRefs } from 'pinia'
     import { roomStore } from '@/stores/room'
+    import { onClickOutside } from '@vueuse/core'
 
     const room = roomStore()
-
     const { currentRoom } = storeToRefs(room)
+
+    const isGroupMenuOpen = ref(false)
+    const groupMenu = ref(null)
+
+    const toggleGroupMenu = () => {
+        isGroupMenuOpen.value = !isGroupMenuOpen.value
+    }
+
+    onClickOutside(groupMenu, () => {
+        isGroupMenuOpen.value = false
+    })
 </script>
 
 <template>
@@ -21,8 +33,18 @@
             <font-awesome-icon :icon="['fas', 'phone']" class="text-gray-600 dark:text-gray-400 size-5 cursor-pointer hover:bg-gray-200 rounded-full p-2 dark:hover:bg-gray-700" />
             <font-awesome-icon :icon="['fas', 'video']" class="text-gray-600 dark:text-gray-400 size-5 cursor-pointer hover:bg-gray-200 rounded-full p-2 dark:hover:bg-gray-700" />
         </div> -->
-        <div v-if="currentRoom.isGroup">
-            <font-awesome-icon :icon="['fas', 'ellipsis']" class="size-5 p-1.5 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer text-gray-700 dark:text-blue-50" />
+        <div v-if="currentRoom.isGroup" class="relative" ref="groupMenu">
+            <font-awesome-icon @click="toggleGroupMenu" :icon="['fas', 'ellipsis']" class="size-5 p-1.5 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer text-gray-700 dark:text-blue-50" />
+            <div v-if="isGroupMenuOpen" class="bg-white dark:bg-gray-600 text-gray-900 dark:text-blue-50 absolute right-0 rounded-lg flex flex-col min-w-44 shadow-lg">
+                <div class="rounded-lg cursor-pointer flex justify-center items-center gap-2 hover:bg-gray-200 dark:hover:bg-gray-500 p-3">
+                    <font-awesome-icon :icon="['fas', 'pen-to-square']" />
+                    <p>Edit group info</p>
+                </div>
+                <div class="rounded-lg cursor-pointer flex justify-center items-center gap-2 hover:bg-gray-200 dark:hover:bg-gray-500 p-3">
+                    <font-awesome-icon :icon="['fas', 'user-plus']" />
+                    <p>Add members</p>
+                </div>
+            </div>
         </div>
     </div>
 </template>
