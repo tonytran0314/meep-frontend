@@ -1,28 +1,20 @@
 <script setup>
-    import { ref, watch } from 'vue'
     import { storeToRefs } from 'pinia'
-    import { useRoute } from 'vue-router'
     import { roomStore } from '@/stores/room'
 
-    const route = useRoute()
     const room = roomStore()
 
-    const currentRoomId = ref(route.params.roomId)
     const { currentRoom } = storeToRefs(room)
-
-    watch(() => route.params.roomId, (newRoomId) => {
-        currentRoomId.value = newRoomId
-    })
 </script>
 
 <template>
     <div class="w-full h-12 flex justify-between items-center">
-        <!-- CHATTING PERSON OR GROUP INFO -->
+        <!-- ROOM INFO -->
         <div class="flex items-center gap-2">
             <!-- AVATAR -->
             <div class="size-12 rounded-full bg-gray-500 shadow-lg"></div>
             <!-- PERSON OR GROUP NAME -->
-            <p class="font-bold">{{ currentRoom.title }}, ID: {{ currentRoomId }}</p>
+            <p class="font-bold">{{ currentRoom.name }}</p>
         </div>
         <!-- ACTIONS: VOICE CALL, VIDEO CALL -->
         <!-- <div class="flex items-center gap-2">

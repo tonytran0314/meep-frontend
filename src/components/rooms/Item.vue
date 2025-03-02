@@ -1,7 +1,8 @@
 <script setup>
-    import { ref, onMounted, onUnmounted } from 'vue'
+    import { ref, onMounted } from 'vue'
 
     const props = defineProps({
+        name: String,
         roomId: Number,
         latestMessage: String
     })
@@ -25,7 +26,7 @@
         <div class="size-12 rounded-full bg-gray-500 shadow-lg"></div>
         <!-- FULLNAME -->
         <div>
-            <p>Room ID: {{ roomId }}</p>
+            <p>{{ name }}</p>
             <div class="flex items-center gap-2">
                 <p class="text-gray-400">{{ previewMessage || 'Let say hi to your new friend' }}</p>
                 <!-- <p class="text-gray-400">Preview mes... 00:00</p> -->

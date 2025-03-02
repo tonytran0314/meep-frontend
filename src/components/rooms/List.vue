@@ -42,6 +42,7 @@
             <Room 
                 v-for="room in room.list ?? []" 
                 :key="room.id"
+                :name="room.name"
                 :roomId="room.id" 
                 :latestMessage="room.latestMessage?.content" 
                 @click="openRoom(room.id)" 
