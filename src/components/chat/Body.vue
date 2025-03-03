@@ -24,8 +24,8 @@
         <div v-else class="m-auto flex flex-col items-center gap-4">
             <div class="size-20 rounded-full bg-gray-500 shadow-lg"></div>
             <div class="text-center">
-                <p>`User.fullname` and you are friend now</p>
-                <p>Let say hi to `User.name`</p>
+                <p>{{ currentRoom.name }} and you are friend now</p>
+                <p>Let say hi to {{ currentRoom.name }}</p>
             </div>
         </div>
     </div>
