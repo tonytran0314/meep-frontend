@@ -39,6 +39,6 @@
     </div>
     <div class="flex justify-end gap-4 text-sm text-white">
         <div @click="back" class="bg-gray-500 rounded-lg px-6 py-2 cursor-pointer hover:bg-gray-600">Back</div>
-        <div class="bg-teal-600 rounded-lg px-6 py-2 cursor-pointer hover:bg-teal-500">Save</div>
+        <!-- <div class="bg-teal-600 rounded-lg px-6 py-2 cursor-pointer hover:bg-teal-500">Save</div> -->
     </div>
 </template>
