@@ -1,10 +1,61 @@
 <script setup>
+    import { ref, watchEffect } from 'vue';
+    import { useRouter } from 'vue-router';
     
+    const theme = ref(localStorage.getItem('theme') || 'light');
+    const router = useRouter();
+    
+    const toggleTheme = () => {
+        theme.value = theme.value === 'light' ? 'dark' : 'light';
+        localStorage.setItem('theme', theme.value);
+    };
+
+    const goToLoginPage = () => {
+        router.push({ name: 'Login' })
+    }
+
+    const goToSignupPage = () => {
+        router.push({ name: 'Signup' })
+    }
+    
+    watchEffect(() => {
+        document.documentElement.classList.remove('light', 'dark');
+        document.documentElement.classList.add(theme.value);
+    });
 </script>
 
 <template>
-    <div class="bg-white dark:bg-gray-800 w-full h-screen flex justify-center items-center flex-col gap-4">
-        <p class="text-gray-900 dark:text-blue-50">guest vfiew</p>
-        <router-link to="/login" class="bg-teal-600 px-6 py-3 rounded hover:bg-teal-500">Login</router-link>
+    <div :class="theme" class="min-h-screen flex flex-col items-center justify-center px-6 transition-colors duration-300">
+      <button @click="toggleTheme" class="absolute top-4 right-4 p-2 border rounded shadow-md">
+        {{ theme === 'light' ? 'Dark' : 'Light' }} Mode
+      </button>
+      
+      <div class="flex flex-col md:flex-row items-center max-w-4xl w-full gap-8">
+        <div class="text-center md:text-left flex-1">
+          <h1 class="text-5xl font-bold text-teal-600 dark:text-teal-400">Welcome to Meep</h1>
+          <p class="mt-4 text-lg text-gray-700 dark:text-gray-300">
+            The best way to chat with your friends and stay connected.
+          </p>
+          <div class="mt-6">
+            <button @click="goToSignupPage" class="bg-teal-600 text-white font-semibold py-3 px-6 rounded shadow-md hover:bg-teal-700">Signup</button>
+            <button @click="goToLoginPage" class="ml-3 border border-teal-600 text-teal-600 dark:border-teal-400 dark:text-teal-400 py-3 px-6 rounded shadow-md hover:bg-teal-100 dark:hover:bg-teal-800">Login</button>
+          </div>
+        </div>
+        <div class="flex-1">
+            <img src="@/assets/no-room.svg" alt="No Room Illustrator">
+        </div>
+      </div>
     </div>
 </template>
+  
+  <style>
+    .dark {
+        background-color: #1e293b;
+        color: #e2e8f0;
+    }
+    .light {
+        background-color: #f8fafc;
+        color: #1e293b;
+    }
+  </style>
+  
