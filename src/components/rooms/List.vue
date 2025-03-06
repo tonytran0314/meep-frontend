@@ -1,15 +1,22 @@
 <script setup>
     import { onMounted, watch } from 'vue'
     import { roomStore } from '@/stores/room'
+    import { modalStore } from '@/stores/modal'
     import { profileStore } from '@/stores/profile'
-
+    
     import Room from '@/components/rooms/Item.vue'
+    import AddFriendModal from '@/components/modals/AddFriendModal.vue'
 
+    const modal = modalStore()
     const room = roomStore()
     const profile = profileStore()
 
     const openRoom = (roomId) => {
         room.open(roomId)
+    }
+
+    const openAddFriendModal = () => {
+        modal.open(AddFriendModal, { title: 'Add Friends' })
     }
 
     const subscribeToRooms = () => {
@@ -54,7 +61,7 @@
                 <p>You currently don't have any conversations.</p>
                 <p>Please feel free to add some friends to start chatting.</p>
             </div>
-            <div class="bg-teal-600 flex justify-center items-center rounded-lg text-white cursor-pointer py-2 px-4 gap-4 hover:bg-teal-500">
+            <div @click="openAddFriendModal" class="bg-teal-600 flex justify-center items-center rounded-lg text-white cursor-pointer py-2 px-4 gap-4 hover:bg-teal-500">
                 <font-awesome-icon :icon="['fas', 'user-plus']" class="size-5" />
                 <p class="text-sm">Find friends</p>
             </div>
