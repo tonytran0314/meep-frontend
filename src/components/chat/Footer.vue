@@ -1,11 +1,14 @@
 <script setup>
-    import { messageStore } from '@/stores/message'
     import { storeToRefs } from 'pinia'
     import { useRoute } from 'vue-router'
+    import { roomStore } from '@/stores/room'
+    import { messageStore } from '@/stores/message'
 
+    const room = roomStore()
     const route = useRoute()
     const message = messageStore()
     const { newMessage } = storeToRefs(message)
+    const { currentRoom } = storeToRefs(room)
 
     const sendMessage = () => {
         message.send({
@@ -18,7 +21,7 @@
 </script>
 
 <template>
-    <div class="w-full h-12 flex items-center gap-4">
+    <div v-if="currentRoom" class="w-full h-12 flex items-center gap-4">
         <!-- MEDIA -->
         <!-- <div class="flex gap-2">
             <font-awesome-icon :icon="['fas', 'image']" class="text-gray-600 dark:text-gray-400 size-5 cursor-pointer hover:bg-gray-200 p-2 rounded-full dark:hover:bg-gray-700" />

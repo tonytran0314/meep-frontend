@@ -11,7 +11,7 @@
 </script>
 
 <template>
-    <div class="flex flex-1 overflow-auto">
+    <div v-if="currentRoom" class="flex flex-1 overflow-auto">
         <div v-if="currentRoom.messages.length"  class="flex flex-col-reverse w-full overflow-y-auto gap-0.5 px-2">
             <!-- CHAT LINES -->
             <div v-for="message in currentRoom.messages" 

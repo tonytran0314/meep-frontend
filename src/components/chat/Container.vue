@@ -4,14 +4,22 @@
     import ChatFooter from '@/components/chat/Footer.vue'
 
     import { roomStore } from '@/stores/room'
+    import { storeToRefs } from 'pinia'
 
     const room = roomStore()
+
+    const { isValidRoomId } = storeToRefs(room)
 </script>
 
 <template>
-    <!-- Chỗ này làm suspense await như bên cột trái (rooms), để tránh hiện chữ there is no room lúc chưa load xong -->
     <div class="bg-white dark:bg-gray-800 shadow-lg rounded-2xl p-4 flex flex-1">
-        <div v-if="room.list.length > 0" class="flex flex-col flex-1 gap-4">
+        <div v-if="!isValidRoomId" class="m-auto flex flex-col gap-4 text-center">
+            <img src="@/assets/no-room.svg" alt="No Room Illustrator" class="size-96">
+            <div>
+                <p>Invalid Room ID</p>
+            </div>
+        </div>
+        <div v-else-if="room.list.length > 0" class="flex flex-col flex-1 gap-4">
             <ChatHeader />
             <ChatBody />
             <ChatFooter />

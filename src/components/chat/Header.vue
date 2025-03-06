@@ -28,7 +28,7 @@
 </script>
 
 <template>
-    <div class="w-full h-12 flex justify-between items-center">
+    <div v-if="currentRoom" class="w-full h-12 flex justify-between items-center">
         <!-- ROOM INFO -->
         <div class="flex items-center gap-2">
             <!-- AVATAR -->

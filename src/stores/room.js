@@ -11,6 +11,7 @@ export const roomStore = defineStore('room', () => {
     const router = useRouter()
     const list = ref([])
     const currentRoom = ref(null)
+    const isValidRoomId = ref(true)
 
 
     /* -------------------------------------------------------------------------- */
@@ -27,12 +28,18 @@ export const roomStore = defineStore('room', () => {
 
     const open = async (roomId) => {
         try {
+            isValidRoomId.value = true
             router.push({ name: 'Chat', params: { roomId: roomId } })
             
             const res = await api.get(`/rooms/${roomId}`)
             currentRoom.value = res.data.data
         } catch (error) {
-            console.log(error)
+            if (error.response && error.response.status === 403) {
+                const firstRoom = list.value.length > 0 ? list.value[0].id : null;
+                currentRoom.value = null;
+                router.push({ name: 'Chat', params: { roomId: firstRoom } });
+                isValidRoomId.value = false
+            }
         }
     }
 
@@ -49,6 +56,7 @@ export const roomStore = defineStore('room', () => {
     return {
         list,
         currentRoom,
+        isValidRoomId,
         get,
         open
     }
