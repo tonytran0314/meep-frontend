@@ -3,6 +3,7 @@
     import { roomStore } from '@/stores/room'
     import { modalStore } from '@/stores/modal'
     import { profileStore } from '@/stores/profile'
+    import { sidebarStore } from '@/stores/sidebar'
     
     import Room from '@/components/rooms/Item.vue'
     import AddFriendModal from '@/components/modals/AddFriendModal.vue'
@@ -10,9 +11,11 @@
     const modal = modalStore()
     const room = roomStore()
     const profile = profileStore()
+    const sidebar = sidebarStore()
 
     const openRoom = (roomId) => {
         room.open(roomId)
+        sidebar.hide()
     }
 
     const openAddFriendModal = () => {

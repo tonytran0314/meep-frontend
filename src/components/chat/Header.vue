@@ -2,13 +2,15 @@
     import { ref } from 'vue'
     import { storeToRefs } from 'pinia'
     import { roomStore } from '@/stores/room'
-    import { onClickOutside } from '@vueuse/core'
     import { modalStore } from '@/stores/modal'
+    import { onClickOutside } from '@vueuse/core'
+    import { sidebarStore } from '@/stores/sidebar'
 
     import AddGroupMembers from '@/components/modals/AddGroupMembers.vue'
-
+    
     const modal = modalStore()
     const room = roomStore()
+    const sidebar = sidebarStore()
     const { currentRoom } = storeToRefs(room)
 
     const isGroupMenuOpen = ref(false)
@@ -25,16 +27,25 @@
     const openAddGroupMembersModal = () => {
         modal.open(AddGroupMembers, { title: 'Add members to group' })
     }
+
+    const showSideBar = () => {
+        sidebar.show()
+    }
 </script>
 
 <template>
     <div v-if="currentRoom" class="w-full h-12 flex justify-between items-center">
-        <!-- ROOM INFO -->
-        <div class="flex items-center gap-2">
-            <!-- AVATAR -->
-            <div class="size-12 rounded-full bg-gray-500 shadow-lg"></div>
-            <!-- PERSON OR GROUP NAME -->
-            <p class="font-bold">{{ currentRoom.name }}</p>
+        <div class="flex items-center gap-4">
+            <!-- SHOW SIDE BAR ICON -->
+            <font-awesome-icon @click="showSideBar" :icon="['fas', 'bars']" class="size-5 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer p-2 rounded-full" />
+
+            <!-- ROOM INFO -->
+            <div class="flex items-center gap-2">
+                <!-- AVATAR -->
+                <div class="size-12 rounded-full bg-gray-500 shadow-lg"></div>
+                <!-- PERSON OR GROUP NAME -->
+                <p class="font-bold">{{ currentRoom.name }}</p>
+            </div>
         </div>
         <!-- ACTIONS: VOICE CALL, VIDEO CALL -->
         <!-- <div class="flex items-center gap-2">
