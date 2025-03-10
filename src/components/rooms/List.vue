@@ -60,7 +60,7 @@
         </div>
         <div v-else class="m-auto flex flex-col gap-4 items-center">
             <img src="@/assets/no-room.svg" alt="No Room Illustrator" class="size-72">
-            <div class="text-sm text-center">
+            <div class="text-sm sm:text-md text-center">
                 <p>You currently don't have any conversations.</p>
                 <p>Please feel free to add some friends to start chatting.</p>
             </div>
