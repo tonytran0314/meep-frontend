@@ -67,7 +67,7 @@
 
 <template>
     <div class="w-full h-screen bg-blue-50 dark:bg-gray-900 p-6 flex">
-        <div v-if="isPageLoading" class="flex flex-1 gap-6">
+        <div v-if="isPageLoading" class="flex w-full gap-6">
             <RoomsLoading />
             <ChatLoading />
         </div>
