@@ -35,16 +35,16 @@
 
 <template>
     <div v-if="currentRoom" class="w-full h-12 flex justify-between items-center">
-        <div class="flex items-center gap-4">
+        <div class="flex items-center gap-2 sm:gap-4">
             <!-- SHOW SIDE BAR ICON -->
             <font-awesome-icon @click="showSideBar" :icon="['fas', 'bars']" class="size-5 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer p-2 rounded-full lg:hidden" />
 
             <!-- ROOM INFO -->
             <div class="flex items-center gap-2">
                 <!-- AVATAR -->
-                <div class="size-12 rounded-full bg-gray-500 shadow-lg"></div>
+                <div class="size-10 sm:size-12 rounded-full bg-gray-500 shadow-lg"></div>
                 <!-- PERSON OR GROUP NAME -->
-                <p class="font-bold">{{ currentRoom.name }}</p>
+                <p class="font-bold max-w-24 sm:max-w-72 truncate">{{ currentRoom.name }}</p>
             </div>
         </div>
         <!-- ACTIONS: VOICE CALL, VIDEO CALL -->
