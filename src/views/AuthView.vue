@@ -7,7 +7,7 @@
             <p class="text-3xl leading-9 font-bold text-center text-gray-900 dark:text-blue-50">
                 Welcome to <span class="uppercase text-teal-500">meep</span>
             </p>
-            <div class="w-full h-auto rounded-lg p-4 sm:p-8 border border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-800 sm:max-w-lg">
+            <div class="w-full h-auto rounded-lg p-4 sm:p-8 border border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-800 sm:max-w-lg shadow-lg">
                 <router-view />
             </div>
         </div>
