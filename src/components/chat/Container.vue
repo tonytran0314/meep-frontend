@@ -6,13 +6,19 @@
 
     import { modalStore } from '@/stores/modal'
     import { roomStore } from '@/stores/room'
+    import { sidebarStore } from '@/stores/sidebar'
     import { storeToRefs } from 'pinia'
 
     const modal = modalStore()
     const room = roomStore()
+    const sidebar = sidebarStore()
 
     const openAddFriendModal = () => {
         modal.open(AddFriendModal, { title: 'Add Friends' })
+    }
+
+    const openSidebar = () => {
+        sidebar.show()
     }
 
     const { isValidRoomId } = storeToRefs(room)
@@ -37,9 +43,15 @@
                 <p class="text-sm sm:text-md">You currently don't have any conversations.</p>
                 <p class="text-sm sm:text-md">Please feel free to add some friends to start chatting.</p>
             </div>
-            <div @click="openAddFriendModal" class="bg-teal-600 flex justify-center items-center rounded-lg text-white cursor-pointer py-3 gap-4 hover:bg-teal-500">
-                <font-awesome-icon :icon="['fas', 'user-plus']" class="size-6" />
-                <p>Find friends</p>
+            <div class="flex flex-col lg:flex-row gap-2 w-full justify-center">
+                <div @click="openSidebar" class="lg:hidden border border-gray-700 dark:border-gray-400 flex justify-center items-center rounded-lg text-gray-900 dark:text-white shadow-lg cursor-pointer px-6 py-3 gap-4 hover:bg-gray-200 dark:hover:bg-gray-700">
+                    <font-awesome-icon :icon="['fas', 'bars']" class="size-6" />
+                    <p>Menu</p>
+                </div>
+                <div @click="openAddFriendModal" class="bg-teal-600 flex justify-center items-center rounded-lg text-white cursor-pointer px-6 py-3 gap-4 shadow-lg hover:bg-teal-500">
+                    <font-awesome-icon :icon="['fas', 'user-plus']" class="size-6" />
+                    <p>Find friends</p>
+                </div>
             </div>
         </div>
     </div>
