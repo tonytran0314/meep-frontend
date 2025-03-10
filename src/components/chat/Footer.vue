@@ -33,7 +33,7 @@
                 <input v-model="newMessage" type="text" class="size-full border-2 rounded-full px-4 dark:bg-gray-700 dark:border-gray-700" placeholder="Aa...">
             </div>
             <button type="submit" class="flex justify-center items-center">
-                <font-awesome-icon :icon="['fas', 'paper-plane']" class="text-teal-600 size-5 hover:bg-teal-100 p-2 rounded-full" />
+                <font-awesome-icon :icon="['fas', 'paper-plane']" class="text-teal-600 size-5 bg-teal-200 hover:bg-teal-100 p-2 rounded-full" />
             </button>
         </form>
     </div>
