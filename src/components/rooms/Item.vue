@@ -25,10 +25,10 @@
         <!-- AVATAR -->
         <div class="size-12 rounded-full bg-gray-500 shadow-lg"></div>
         <!-- FULLNAME -->
-        <div>
-            <p>{{ name }}</p>
+        <div class="flex flex-col gap-2 flex-1">
+            <p class="line-clamp-1">{{ name }}</p> 
             <div class="flex items-center gap-2">
-                <p class="text-gray-400">{{ previewMessage || 'Let say hi to your new friend' }}</p>
+                <p class="text-gray-400 line-clamp-1">{{ previewMessage || 'Let say hi to your new friend' }}</p>
                 <!-- <p class="text-gray-400">Preview mes... 00:00</p> -->
                 <!-- <div class="size-3 rounded-full bg-green-400"></div> -->
             </div>
