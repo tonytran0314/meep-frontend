@@ -35,9 +35,9 @@
         <Transition name="side-menu">
             <div 
                 v-if="isSidebarVisible" 
-                class="fixed z-[99] top-0 left-0 h-full w-96 bg-white dark:bg-gray-800 shadow-2xl flex flex-col justify-between lg:hidden"
+                class="fixed z-[99] top-0 left-0 h-full w-full sm:w-96 bg-white dark:bg-gray-800 shadow-2xl flex flex-col justify-between lg:hidden"
                 @click.stop>
-                <div class="h-full w-96 p-4 flex flex-col gap-4">
+                <div class="h-full w-full sm:w-96 p-4 flex flex-col gap-4">
                     <UserInformation />
                     <Activities />
                     <RoomList />
@@ -55,7 +55,7 @@
 
     .side-menu-enter-from,
     .side-menu-leave-to {
-        transform: translate(-384px);
+        transform: translate(-100%);
     }
 
     .side-menu-enter-to {
