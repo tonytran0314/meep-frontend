@@ -8,9 +8,9 @@ import "vue-toastification/dist/index.css"
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faGear, faUser, faRightFromBracket, faXmark, faBars, faImage, faNoteSticky, faPaperPlane, faPhone, faVideo, faMagnifyingGlass, faBell, faUserPlus, faCommentMedical, faPlus, faCheck, faHome, faEllipsis, faPenToSquare } from '@fortawesome/free-solid-svg-icons'
+import { faGear, faUser, faRightFromBracket, faXmark, faBars, faImage, faNoteSticky, faPaperPlane, faPhone, faVideo, faMagnifyingGlass, faBell, faUserPlus, faCommentMedical, faPlus, faCheck, faHome, faEllipsis, faPenToSquare, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faGear, faUser, faRightFromBracket, faXmark, faBars, faImage, faNoteSticky, faPaperPlane, faPhone, faVideo, faMagnifyingGlass, faBell, faUserPlus, faCommentMedical, faPlus, faCheck, faHome, faEllipsis, faPenToSquare) 
+library.add(faGear, faUser, faRightFromBracket, faXmark, faBars, faImage, faNoteSticky, faPaperPlane, faPhone, faVideo, faMagnifyingGlass, faBell, faUserPlus, faCommentMedical, faPlus, faCheck, faHome, faEllipsis, faPenToSquare, faChevronLeft) 
 
 const pinia = createPinia()
 const app = createApp(App)

@@ -37,7 +37,7 @@
     <div v-if="currentRoom" class="w-full h-12 flex justify-between items-center">
         <div class="flex items-center gap-2 sm:gap-4">
             <!-- SHOW SIDE BAR ICON -->
-            <font-awesome-icon @click="showSideBar" :icon="['fas', 'bars']" class="size-5 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer p-2 rounded-full lg:hidden" />
+            <font-awesome-icon @click="showSideBar" :icon="['fas', 'chevron-left']" class="size-5 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer p-2 rounded-full lg:hidden" />
 
             <!-- ROOM INFO -->
             <div class="flex items-center gap-2">
