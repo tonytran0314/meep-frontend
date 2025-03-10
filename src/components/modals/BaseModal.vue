@@ -32,7 +32,7 @@
                 class="fixed top-0 left-0 z-[999] w-full h-dvh bg-black bg-opacity-80 flex items-center justify-center">
 
                 <div class="bg-white dark:bg-gray-800 max-w-[90%] dark:border dark:border-gray-700 text-gray-900 dark:text-blue-50 rounded-2xl p-6 space-y-6">
-                    <div class="flex items-center sm:gap-40 justify-between">
+                    <div class="flex items-center gap-8 sm:gap-40 justify-between">
                         <p class="font-bold text-lg sm:text-xl md:text-2xl">{{ modal.props.title }}</p>
                         <CloseModalButton />
                     </div>
