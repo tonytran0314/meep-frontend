@@ -16,7 +16,7 @@
             <!-- CHAT LINES -->
             <div v-for="message in currentRoom.messages" 
                 class=" px-4 py-2 max-w-[75%] rounded-3xl"
-                :class="(message.user_id === id) ? 'self-end bg-teal-600' : 'self-start bg-gray-200 dark:bg-gray-700'"
+                :class="(message.user_id === id) ? 'self-end bg-teal-600 text-white' : 'self-start bg-gray-200 dark:bg-gray-700'"
             >
                 {{ message.content }}
             </div> 
