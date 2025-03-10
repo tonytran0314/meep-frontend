@@ -12,7 +12,7 @@
 
 <template>
     <div v-if="currentRoom" class="flex flex-1 overflow-auto">
-        <div v-if="currentRoom.messages.length"  class="flex flex-col-reverse w-full overflow-y-auto gap-0.5 px-2">
+        <div v-if="currentRoom.messages.length"  class="flex flex-col-reverse w-full overflow-y-auto gap-2 px-2">
             <!-- CHAT LINES -->
             <div v-for="message in currentRoom.messages" 
                 class=" px-4 py-2 max-w-[75%] rounded-3xl"
