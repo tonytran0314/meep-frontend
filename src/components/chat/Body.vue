@@ -22,10 +22,10 @@
             </div> 
         </div>
         <div v-else class="m-auto flex flex-col items-center gap-4">
-            <div class="size-20 rounded-full bg-gray-500 shadow-lg"></div>
+            <div class="size-16 sm:size-20 rounded-full bg-gray-500 shadow-lg"></div>
             <div class="text-center">
-                <p>{{ currentRoom.name }} and you are friend now</p>
-                <p>Let say hi to {{ currentRoom.name }}</p>
+                <p class="text-sm sm:text-md">{{ currentRoom.name }} and you are friend now</p>
+                <p class="text-sm sm:text-md">Let say hi to {{ currentRoom.name }}</p>
             </div>
         </div>
     </div>
