@@ -34,8 +34,8 @@
         <div v-else class="m-auto flex flex-col gap-4 text-center">
             <img src="@/assets/no-room.svg" alt="No Room Illustrator" class="size-96">
             <div>
-                <p>You currently don't have any conversations.</p>
-                <p>Please feel free to add some friends to start chatting.</p>
+                <p class="text-sm sm:text-md">You currently don't have any conversations.</p>
+                <p class="text-sm sm:text-md">Please feel free to add some friends to start chatting.</p>
             </div>
             <div @click="openAddFriendModal" class="bg-teal-600 flex justify-center items-center rounded-lg text-white cursor-pointer py-3 gap-4 hover:bg-teal-500">
                 <font-awesome-icon :icon="['fas', 'user-plus']" class="size-6" />
