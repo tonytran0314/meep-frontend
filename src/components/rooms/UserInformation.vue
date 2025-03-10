@@ -16,8 +16,8 @@
         <!-- AVATAR -->
         <div class="size-12 rounded-full bg-teal-600 shadow-lg"></div>
         <!-- FULLNAME -->
-        <div class="flex items-center">
-            <p class="text-lg">{{ profile.name }}</p> 
+        <div class="flex items-center flex-1">
+            <p class="text-lg line-clamp-1">{{ profile.name }}</p> 
             <!-- <div class="flex items-center gap-2">
                 <p class="text-gray-400">Online status</p>
                 <div class="size-3 rounded-full bg-green-400"></div>
