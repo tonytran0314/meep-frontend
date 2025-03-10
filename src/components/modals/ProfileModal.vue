@@ -16,10 +16,10 @@
 </script>
 
 <template>
-    <div class="w-96 space-y-16">
+    <div class="w-auto space-y-16">
         <div class="relative">
             <div class="bg-orange-300 w-full h-32 rounded-xl"></div>
-            <div class="bg-teal-600 size-28 rounded-full absolute -bottom-14 left-1/2 transform -translate-x-1/2"></div>
+            <div class="bg-teal-600 size-20 sm:size-24 md:size-28 rounded-full absolute -bottom-10 sm:-bottom-12 md:-bottom-14 left-1/2 transform -translate-x-1/2"></div>
         </div>
         <div class="space-y-4">
         <!-- missing v-model and error. Check login for more -->
