@@ -28,5 +28,5 @@
             </select>
         </div>
     </div>
-    <div @click="back" class="bg-gray-500 rounded-lg px-6 py-2 cursor-pointer hover:bg-gray-600 text-white">Back</div>
+    <div @click="back" class="bg-gray-500 rounded-lg px-6 py-2 cursor-pointer hover:bg-gray-600 text-white text-center">Back</div>
 </template>
