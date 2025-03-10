@@ -15,7 +15,7 @@
         <div v-if="currentRoom.messages.length"  class="flex flex-col-reverse w-full overflow-y-auto gap-0.5 px-2">
             <!-- CHAT LINES -->
             <div v-for="message in currentRoom.messages" 
-                class=" px-4 py-2 max-w-[75%] rounded-full"
+                class=" px-4 py-2 max-w-[75%] rounded-3xl"
                 :class="(message.user_id === id) ? 'self-end bg-teal-600' : 'self-start bg-gray-200 dark:bg-gray-700'"
             >
                 {{ message.content }}
