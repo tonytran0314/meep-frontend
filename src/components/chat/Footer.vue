@@ -28,9 +28,9 @@
             <font-awesome-icon :icon="['fas', 'note-sticky']" class="text-gray-600 dark:text-gray-400 size-5 cursor-pointer hover:bg-gray-200 p-2 rounded-full dark:hover:bg-gray-700" />
         </div> -->
         <!-- MESSAGE INPUT & SEND BUTTON -->
-        <form @submit.prevent="sendMessage" class="flex gap-2 flex-1">
-            <div class="flex items-center flex-1">
-                <input v-model="newMessage" type="text" class="h-full border-2 rounded-full flex-1 px-4 dark:bg-gray-700 dark:border-gray-700" placeholder="Aa...">
+        <form @submit.prevent="sendMessage" class="flex gap-2 w-full">
+            <div class="flex items-center w-full">
+                <input v-model="newMessage" type="text" class="size-full border-2 rounded-full px-4 dark:bg-gray-700 dark:border-gray-700" placeholder="Aa...">
             </div>
             <button type="submit" class="flex justify-center items-center">
                 <font-awesome-icon :icon="['fas', 'paper-plane']" class="text-teal-600 size-5 hover:bg-teal-100 p-2 rounded-full" />
