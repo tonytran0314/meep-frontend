@@ -36,7 +36,7 @@
         <p>{{ notificationObject.senderName }} has sent you a friend request</p>
         <div class="space-x-2">
             <PrimaryButton @click="acceptAddFriendRequest" class="text-sm">Accept</PrimaryButton>
-            <SecondaryButton @click="rejectAddFriendRequest" class="text-sm">Remove</SecondaryButton>
+            <SecondaryButton @click="rejectAddFriendRequest" class="text-sm bg-gray-500 hover:bg-gray-600">Remove</SecondaryButton>
         </div>
     </BaseNotification>
 </template>

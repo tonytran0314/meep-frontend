@@ -57,8 +57,8 @@
         <div class="h-72 overflow-auto space-y-4">
             <div v-for="friend in markedFriends" :key="friend.id" class="flex justify-between">
                 <p>{{ friend.name }}</p>
-                <font-awesome-icon v-if="friend.inGroup" :icon="['fas', 'check']" class="bg-teal-600 size-4 p-2 flex justify-center items-center rounded-full" />
-                <font-awesome-icon v-else @click="addUserToGroup(friend.id)" :icon="['fas', 'plus']" class="cursor-pointer bg-gray-200 dark:bg-gray-700 size-4 p-2 hover:bg-teal-600 dark:hover:bg-teal-600 flex justify-center items-center rounded-full" />
+                <font-awesome-icon v-if="friend.inGroup" :icon="['fas', 'check']" class="bg-teal-600 size-4 p-2 flex justify-center items-center rounded-full text-white" />
+                <font-awesome-icon v-else @click="addUserToGroup(friend.id)" :icon="['fas', 'plus']" class="cursor-pointer bg-gray-200 dark:bg-gray-700 size-4 p-2 hover:bg-teal-600 dark:hover:bg-teal-600 flex justify-center items-center rounded-full hover:text-white" />
             </div>
         </div>
         <PrimaryButton @click="updateGroupMembers">Add</PrimaryButton>

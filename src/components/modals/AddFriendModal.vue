@@ -24,8 +24,8 @@
             <div v-for="friend in friend.foundFriends" class="flex justify-between p-4 items-center">
                 <p>{{ friend.username }}</p>
                 
-                <font-awesome-icon v-if="friend.markAsAdded" :icon="['fas', 'check']" class="bg-teal-600 size-4 p-2 flex justify-center items-center rounded-full" />
-                <font-awesome-icon v-else @click="sendAddFriendRequestToUser(friend.id)" :icon="['fas', 'plus']" class="cursor-pointer bg-gray-200 dark:bg-gray-700 size-4 p-2 hover:bg-teal-600 dark:hover:bg-teal-600 flex justify-center items-center rounded-full" />
+                <font-awesome-icon v-if="friend.markAsAdded" :icon="['fas', 'check']" class="bg-teal-600 size-4 p-2 flex justify-center items-center rounded-full text-white" />
+                <font-awesome-icon v-else @click="sendAddFriendRequestToUser(friend.id)" :icon="['fas', 'plus']" class="cursor-pointer bg-gray-200 dark:bg-gray-700 size-4 p-2 hover:bg-teal-600 dark:hover:bg-teal-600 flex justify-center items-center rounded-full hover:text-white" />
             </div>
         </div>
     </div>
