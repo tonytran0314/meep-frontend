@@ -32,7 +32,7 @@
 		
 		<div class="flex flex-col md:flex-row items-center max-w-4xl w-full gap-8">
 			<div class="text-center md:text-left flex-1">
-				<h1 class="text-4xl md:text-5xl font-bold text-teal-600 dark:text-teal-400">Welcome to Meep</h1>
+				<h1 class="text-4xl md:text-5xl font-bold text-teal-600 dark:text-teal-400">Welcome to MeepX</h1>
 				<p class="mt-4 text-md md:text-lg text-gray-700 dark:text-gray-300">
 					The best way to chat with your friends and stay connected.
 				</p>
