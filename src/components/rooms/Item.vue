@@ -3,6 +3,7 @@
 
     const props = defineProps({
         name: String,
+        avatar: String,
         roomId: Number,
         latestMessage: String
     })
@@ -23,9 +24,11 @@
 <template>
     <div class="flex gap-2 p-3 rounded-lg cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700">
         <!-- AVATAR -->
-        <div class="size-12 rounded-full bg-gray-500 shadow-lg"></div>
+        <div class="size-12 rounded-full bg-gray-500 shadow-lg">
+            <img :src="avatar" class="rounded-full" alt="User avatar">
+        </div>
         <!-- FULLNAME -->
-        <div class="flex flex-col gap-2 flex-1">
+        <div class="flex flex-col gap-1 flex-1">
             <p class="line-clamp-1">{{ name }}</p> 
             <div class="flex items-center gap-2">
                 <p class="text-gray-400 line-clamp-1">{{ previewMessage || 'Let say hi to your new friend' }}</p>

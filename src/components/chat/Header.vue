@@ -42,7 +42,9 @@
             <!-- ROOM INFO -->
             <div class="flex items-center gap-2">
                 <!-- AVATAR -->
-                <div class="size-10 sm:size-12 rounded-full bg-gray-500 shadow-lg"></div>
+                <div class="size-10 sm:size-12 rounded-full bg-gray-500 shadow-lg">
+                    <img :src="currentRoom.avatar" class="rounded-full" alt="User avatar">
+                </div>
                 <!-- PERSON OR GROUP NAME -->
                 <p class="font-bold max-w-24 sm:max-w-72 truncate">{{ currentRoom.name }}</p>
             </div>

@@ -10,6 +10,8 @@ export const profileStore = defineStore('profile', () => {
     const id = ref(null)
     const name = ref(null)
     const username = ref(null)
+    const avatar = ref(null)
+    const background = ref(null)
 
 
     /* -------------------------------------------------------------------------- */
@@ -21,6 +23,8 @@ export const profileStore = defineStore('profile', () => {
             id.value = result.data.data.id
             name.value = result.data.data.name
             username.value = result.data.data.username
+            avatar.value = result.data.data.avatar
+            background.value = result.data.data.background
         } catch (error) {
             console.log(error)
         }
@@ -40,6 +44,8 @@ export const profileStore = defineStore('profile', () => {
         id,
         name,
         username,
+        avatar,
+        background,
         get,
     }
 
