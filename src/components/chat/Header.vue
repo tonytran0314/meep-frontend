@@ -42,7 +42,7 @@
             <!-- ROOM INFO -->
             <div class="flex items-center gap-2">
                 <!-- AVATAR -->
-                <div class="size-10 sm:size-12 rounded-full bg-gray-500 shadow-lg">
+                <div class="size-10 sm:size-12 rounded-full shadow-lg">
                     <img :src="currentRoom.avatar" class="rounded-full" alt="User avatar">
                 </div>
                 <!-- PERSON OR GROUP NAME -->

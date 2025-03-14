@@ -24,7 +24,7 @@
 <template>
     <div class="flex gap-2 p-3 rounded-lg cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700">
         <!-- AVATAR -->
-        <div class="size-12 rounded-full bg-gray-500 shadow-lg">
+        <div class="size-12 rounded-full shadow-lg">
             <img :src="avatar" class="rounded-full" alt="User avatar">
         </div>
         <!-- FULLNAME -->

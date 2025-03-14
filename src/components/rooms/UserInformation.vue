@@ -14,7 +14,7 @@
 <template>
     <div @click="openMenuModal" class="flex gap-2 p-3 rounded-lg cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700">
         <!-- AVATAR -->
-        <div class="size-12 rounded-full bg-teal-600 shadow-lg">
+        <div class="size-12 rounded-full shadow-lg">
             <img :src="profile.avatar" class="size-full rounded-full" alt="User avatar">
         </div>
         <!-- FULLNAME -->

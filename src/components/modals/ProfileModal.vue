@@ -18,10 +18,10 @@
 <template>
     <div class="w-auto space-y-16">
         <div class="relative">
-            <div class="bg-orange-300 w-full h-32 rounded-xl">
+            <div class="w-full h-32 rounded-xl">
                 <img :src="profile.background" class="w-full h-32 rounded-xl" alt="User background">
             </div>
-            <div class="bg-teal-600 size-20 sm:size-24 md:size-28 rounded-full absolute -bottom-10 sm:-bottom-12 md:-bottom-14 left-1/2 transform -translate-x-1/2">
+            <div class="size-20 sm:size-24 md:size-28 rounded-full absolute -bottom-10 sm:-bottom-12 md:-bottom-14 left-1/2 transform -translate-x-1/2">
                 <img :src="profile.avatar" class="rounded-full" alt="User avatar">
             </div>
         </div>
