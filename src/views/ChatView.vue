@@ -4,22 +4,16 @@
     import ChatLoading from '@/components/chat/Loading.vue'
     import RoomsLoading from '@/components/rooms/Loading.vue'
 
-    import { storeToRefs } from 'pinia'
-    import { useRoute } from 'vue-router'
     import { roomStore } from '@/stores/room'
-    import { ref, onMounted, watch } from 'vue'
+    import { ref, onMounted } from 'vue'
     import { profileStore } from '@/stores/profile' 
     import { notificationStore } from '@/stores/notification' 
     
     const isPageLoading = ref(false)
 
-    const route = useRoute()
     const room = roomStore()
     const profile = profileStore()
     const notification = notificationStore()
-
-    const { id } = storeToRefs(profile)
-    const { list, currentRoom } = storeToRefs(room)
 
     onMounted(async () => {
         isPageLoading.value = true
@@ -30,38 +24,7 @@
             notification.get()
         ])
 
-        const initialRoomId = route.params.roomId || list.value[0]?.id
-        if (initialRoomId) {
-            await room.open(initialRoomId)
-        }
-        
-        // listen to private room
-        window.Echo.private(`room.${initialRoomId}`)
-        .listen('.SendMessage', (event) => {
-            if(event.message.user_id !== id.value) {
-                currentRoom.value.messages.unshift(
-                    {
-                        "content": event.message.content 
-                    }
-                )
-            }
-        })
-
         isPageLoading.value = false
-    })
-
-    watch(() => route.params.roomId, (newRoomId) => {
-        // listen to private room
-        window.Echo.private(`room.${newRoomId}`)
-        .listen('.SendMessage', (event) => {
-            if(event.message.user_id !== id.value) {
-                currentRoom.value.messages.unshift(
-                    {
-                        "content": event.message.content 
-                    }
-                )
-            }
-        })
     })
 </script>
 

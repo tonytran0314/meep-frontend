@@ -8,10 +8,18 @@
     import { roomStore } from '@/stores/room'
     import { sidebarStore } from '@/stores/sidebar'
     import { storeToRefs } from 'pinia'
+    import { onMounted, watch, onBeforeUnmount } from 'vue'
+    import { useRoute } from 'vue-router'
+    import { profileStore } from '@/stores/profile'
 
     const modal = modalStore()
     const room = roomStore()
     const sidebar = sidebarStore()
+    const profile = profileStore()
+    const route = useRoute()
+
+    const { isValidRoomId, currentRoom, list } = storeToRefs(room)
+    const { id } = storeToRefs(profile)
 
     const openAddFriendModal = () => {
         modal.open(AddFriendModal, { title: 'Add Friends' })
@@ -21,7 +29,47 @@
         sidebar.show()
     }
 
-    const { isValidRoomId } = storeToRefs(room)
+    let currentListeningRoom = null
+
+    const listenToRoom = (roomId) => {
+        window.Echo.private(`room.${roomId}`)
+        .listen('.SendMessage', (event) => {
+            if (event.message.user_id !== id.value && currentRoom.value.id == roomId) {
+                currentRoom.value.messages.unshift({
+                    content: event.message.content
+                })
+            }
+        })
+
+        currentListeningRoom = roomId
+    }
+
+    const stopListening = (roomId) => {
+        if (currentListeningRoom && currentListeningRoom !== roomId) {
+            window.Echo.private(`room.${currentListeningRoom}`).stopListening('.SendMessage')
+            console.log(`Stopped listening to room ${currentListeningRoom}`)
+        }
+    }
+
+    onMounted(async () => {
+        const initialRoomId = route.params.roomId || list.value[0]?.id;
+        if (initialRoomId) {
+            await room.open(initialRoomId)
+            listenToRoom(initialRoomId)
+        }
+    })
+
+    watch(() => route.params.roomId, async (newRoomId, oldRoomId) => {
+        if (newRoomId) {
+            stopListening(oldRoomId)
+            await room.open(newRoomId)
+            listenToRoom(newRoomId)
+        }
+    })
+
+    onBeforeUnmount(() => {
+        stopListening(route.params.roomId)
+    })
 </script>
 
 <template>
