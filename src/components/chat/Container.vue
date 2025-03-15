@@ -68,7 +68,9 @@
     })
 
     onBeforeUnmount(() => {
-        stopListening(route.params.roomId)
+        window.addEventListener('beforeunload', () => {
+            window.Echo.disconnect()
+        })
     })
 </script>
 

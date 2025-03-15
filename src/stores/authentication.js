@@ -35,6 +35,9 @@ export const authStore = defineStore('authentication', () => {
 
             if (response.status === 200) {
                 isAuthenticated.value = true
+
+                window.Echo.connect()
+
                 clearError()
                 goToChat()
                 stopLoading()
@@ -51,6 +54,9 @@ export const authStore = defineStore('authentication', () => {
             startLoading()
             
             await api.post('/logout')
+
+            window.Echo.disconnect()
+
             isAuthenticated.value = false
 
             goToGuestPage()
