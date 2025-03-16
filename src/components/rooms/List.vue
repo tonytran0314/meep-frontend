@@ -24,12 +24,7 @@
 
     const subscribeToRooms = () => {
         room.list.forEach((r) => {
-            // if (!window.Echo.privateChannels[`room.${r.id}`]) {
-                window.Echo.private(`room.${r.id}`)
-                    .listen('.SendMessage', (event) => {
-                        console.log(`New message in room ${r.id}:`, event.message.content)
-                    })
-            // }
+            room.listenToRoom(r.id)
         })
     }
 

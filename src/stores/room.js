@@ -2,6 +2,8 @@ import { defineStore } from "pinia"
 import { ref } from "vue"
 import { api } from '@/services/axios.js'
 import { useRouter } from 'vue-router'
+import { profileStore } from '@/stores/profile'
+import { storeToRefs } from 'pinia'
 
 export const roomStore = defineStore('room', () => {
 
@@ -12,6 +14,8 @@ export const roomStore = defineStore('room', () => {
     const list = ref([])
     const currentRoom = ref(null)
     const isValidRoomId = ref(true)
+    const privateChannels = ref({})
+    const { id } = storeToRefs(profileStore())
 
 
     /* -------------------------------------------------------------------------- */
@@ -43,11 +47,25 @@ export const roomStore = defineStore('room', () => {
         }
     }
 
+    const listenToRoom = (roomId) => {
+        if (!privateChannels.value[roomId]) {
+            privateChannels.value[roomId] = window.Echo.private(`room.${roomId}`)
+            privateChannels.value[roomId].listen('.SendMessage', (event) => {
+                if (event.message.user_id !== id.value && currentRoom.value.id == roomId) {
+                    currentRoom.value.messages.unshift({
+                        content: event.message.content
+                    })
+                }
+            })
+        }
+    }
 
-    /* -------------------------------------------------------------------------- */
-    /*                                LOCAL METHODS                               */
-    /* -------------------------------------------------------------------------- */
-
+    const stopListening = (roomId) => {
+        if (privateChannels.value[roomId]) {
+            privateChannels.value[roomId].stopListening('.SendMessage')
+            delete privateChannels.value[roomId]
+        }
+    }
 
 
     /* -------------------------------------------------------------------------- */
@@ -58,7 +76,9 @@ export const roomStore = defineStore('room', () => {
         currentRoom,
         isValidRoomId,
         get,
-        open
+        open,
+        listenToRoom,
+        stopListening
     }
 
 })

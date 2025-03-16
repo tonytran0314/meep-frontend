@@ -10,16 +10,13 @@
     import { storeToRefs } from 'pinia'
     import { onMounted, watch, onBeforeUnmount } from 'vue'
     import { useRoute } from 'vue-router'
-    import { profileStore } from '@/stores/profile'
 
     const modal = modalStore()
     const room = roomStore()
     const sidebar = sidebarStore()
-    const profile = profileStore()
     const route = useRoute()
 
-    const { isValidRoomId, currentRoom, list } = storeToRefs(room)
-    const { id } = storeToRefs(profile)
+    const { isValidRoomId, list } = storeToRefs(room)
 
     const openAddFriendModal = () => {
         modal.open(AddFriendModal, { title: 'Add Friends' })
@@ -29,26 +26,12 @@
         sidebar.show()
     }
 
-    let currentListeningRoom = null
-
     const listenToRoom = (roomId) => {
-        window.Echo.private(`room.${roomId}`)
-        .listen('.SendMessage', (event) => {
-            if (event.message.user_id !== id.value && currentRoom.value.id == roomId) {
-                currentRoom.value.messages.unshift({
-                    content: event.message.content
-                })
-            }
-        })
-
-        currentListeningRoom = roomId
+        room.listenToRoom(roomId)
     }
 
     const stopListening = (roomId) => {
-        if (currentListeningRoom && currentListeningRoom !== roomId) {
-            window.Echo.private(`room.${currentListeningRoom}`).stopListening('.SendMessage')
-            console.log(`Stopped listening to room ${currentListeningRoom}`)
-        }
+        room.stopListening(roomId)
     }
 
     onMounted(async () => {
