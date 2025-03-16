@@ -51,7 +51,7 @@ export const roomStore = defineStore('room', () => {
         if (!privateChannels.value[roomId]) {
             privateChannels.value[roomId] = window.Echo.private(`room.${roomId}`)
             privateChannels.value[roomId].listen('.SendMessage', (event) => {
-                if (event.message.user_id !== id.value && currentRoom.value.id == roomId) {
+                if (event.message.user_id !== id.value && currentRoom.value?.id == roomId) {
                     currentRoom.value.messages.unshift({
                         content: event.message.content
                     })
